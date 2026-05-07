@@ -1,0 +1,130 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  lang?: 'es' | 'en';
+}
+
+const { project, lang = 'es' } = Astro.props;
+
+const statusLabels = {
+  es: { active: 'En desarrollo', planned: 'Próximamente', complete: 'Completo' },
+  en: { active: 'Active',        planned: 'Coming soon',  complete: 'Complete' },
+};
+
+const statusLabel = statusLabels[lang][project.status];
+---
+<article class:list={['glass tilt-card project-card', `accent-${project.accent}`]}>
+  <div class="card-header">
+    <div>
+      <h3 class="card-title">{project.title}</h3>
+      <p class="card-subtitle">{project.subtitle}</p>
+    </div>
+    <span class:list={['tag status-tag', project.accent === 'sapphire' ? 'tag-sapphire' : '']}>
+      {statusLabel}
+    </span>
+  </div>
+
+  <p class="card-desc">{project.description}</p>
+
+  <div class="tags">
+    {project.tags.map(t => (
+      <span class:list={['tag', project.accent === 'sapphire' ? 'tag-sapphire' : '']}>{t}</span>
+    ))}
+  </div>
+
+  {project.link && (
+    <a href={project.link} class="card-link" target="_blank" rel="noopener">
+      {lang === 'es' ? 'Ver proyecto ↗' : 'View project ↗'}
+    </a>
+  )}
+</article>
+
+<style>
+  .project-card {
+    padding: var(--sp-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sp-4);
+  }
+
+  .card-title {
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .card-subtitle {
+    font-size: 0.8rem;
+    color: var(--overlay0);
+    margin-top: var(--sp-1);
+  }
+
+  .status-tag { font-size: 0.68rem; white-space: nowrap; }
+
+  .card-desc {
+    font-size: 0.95rem;
+    color: var(--text);
+    opacity: 0.85;
+    line-height: 1.7;
+  }
+
+  .card-link {
+    font-size: 0.8rem;
+    color: var(--mauve);
+    text-decoration: none;
+    margin-top: auto;
+    transition: opacity 0.2s ease;
+  }
+
+  .accent-sapphire .card-link { color: var(--sapphire); }
+  .card-link:hover { opacity: 0.7; }
+</style>
+
+<script>
+  function initTilt() {
+    document.querySelectorAll<HTMLElement>('.tilt-card').forEach(card => {
+      let raf = 0;
+
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.08s ease, box-shadow 0.3s ease';
+      });
+
+      card.addEventListener('mousemove', (e: MouseEvent) => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const r  = card.getBoundingClientRect();
+          const x  = e.clientX - r.left;
+          const y  = e.clientY - r.top;
+          const cx = r.width  / 2;
+          const cy = r.height / 2;
+          const tX = ((y - cy) / cy) * -7;
+          const tY = ((x - cx) / cx) *  7;
+          card.style.transform =
+            `perspective(900px) rotateX(${tX}deg) rotateY(${tY}deg) scale3d(1.02,1.02,1.02)`;
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(raf);
+        card.style.transition =
+          'transform 0.55s cubic-bezier(0.23,1,0.32,1), box-shadow 0.3s ease';
+        card.style.transform =
+          'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+      });
+    });
+  }
+
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    initTilt();
+  }
+</script>

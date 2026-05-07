@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <path d="M0 30 L50 30" stroke="rgba(203,166,247,0.08)" stroke-width="1" fill="none"/>
+  <path d="M70 30 L120 30" stroke="rgba(203,166,247,0.08)" stroke-width="1" fill="none"/>
+  <path d="M0 90 L45 90" stroke="rgba(116,199,236,0.07)" stroke-width="1" fill="none"/>
+  <path d="M65 90 L120 90" stroke="rgba(116,199,236,0.07)" stroke-width="1" fill="none"/>
+  <path d="M30 0 L30 20" stroke="rgba(148,226,213,0.07)" stroke-width="1" fill="none"/>
+  <path d="M30 40 L30 80" stroke="rgba(148,226,213,0.07)" stroke-width="1" fill="none"/>
+  <path d="M30 100 L30 120" stroke="rgba(148,226,213,0.07)" stroke-width="1" fill="none"/>
+  <path d="M90 0 L90 25" stroke="rgba(245,194,231,0.06)" stroke-width="1" fill="none"/>
+  <path d="M90 35 L90 85" stroke="rgba(245,194,231,0.06)" stroke-width="1" fill="none"/>
+  <path d="M90 95 L90 120" stroke="rgba(245,194,231,0.06)" stroke-width="1" fill="none"/>
+  <path d="M50 30 Q60 30 60 40 L60 80 Q60 90 65 90" stroke="rgba(148,226,213,0.05)" stroke-width="1" fill="none"/>
+  <circle cx="30" cy="30" r="3" fill="none" stroke="rgba(203,166,247,0.20)" stroke-width="1"/>
+  <circle cx="90" cy="90" r="3" fill="none" stroke="rgba(116,199,236,0.17)" stroke-width="1"/>
+  <circle cx="30" cy="90" r="2.5" fill="rgba(148,226,213,0.15)"/>
+  <circle cx="90" cy="30" r="2.5" fill="rgba(245,194,231,0.13)"/>
+  <circle cx="60" cy="60" r="1.5" fill="rgba(203,166,247,0.09)"/>
+  <rect x="26" y="26" width="8" height="8" rx="1" fill="none" stroke="rgba(203,166,247,0.08)" stroke-width="0.5"/>
+  <rect x="86" y="86" width="8" height="8" rx="1" fill="none" stroke="rgba(116,199,236,0.07)" stroke-width="0.5"/>
+</svg>

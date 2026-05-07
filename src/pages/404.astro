@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="404 — Proceso no encontrado">
+  <section class="not-found">
+    <div class="container not-found-inner">
+      <span class="error-code grad-text">404</span>
+      <h1 class="error-title">Proceso no encontrado</h1>
+      <p class="error-desc">
+        Esta ruta no existe en el sistema de archivos.<br />
+        Quizá fue eliminada o nunca fue inicializada.
+      </p>
+      <a href="/" class="btn btn-primary">↩ Volver al inicio</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .not-found-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--sp-6);
+    padding: var(--sp-20) 0;
+  }
+
+  .error-code {
+    font-weight: 800;
+    font-size: clamp(4rem, 15vw, 9rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .error-title {
+    font-weight: 800;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .error-desc {
+    font-size: 0.9rem;
+    color: var(--overlay0);
+    line-height: 1.8;
+  }
+</style>
