@@ -36,7 +36,7 @@ const homeHref = langOptions.find(l => l.code === lang)!.href;
   <nav class="container nav-inner" aria-label="Navegación principal">
 
     <a href={homeHref} class="nav-logo" aria-label="Inicio — OACH">
-      <span class="nav-wordmark">OACH</span>
+      <img src="/favicon.svg" alt="OACH" class="nav-logo-img" width="36" height="36" />
     </a>
 
     <ul class="nav-links" id="nav-menu" role="list">
@@ -111,14 +111,11 @@ const homeHref = langOptions.find(l => l.code === lang)!.href;
 
   .nav-logo:hover { opacity: 0.75; }
 
-  .nav-wordmark {
-    font-size: 0.85rem;
-    font-weight: 600;
-    background: linear-gradient(90deg, var(--mauve), var(--sapphire));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 0.06em;
+  .nav-logo-img {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
   }
 
   /* Desktop: centred inline links */

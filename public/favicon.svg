@@ -1,11 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#11111b"/>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#cba6f7"/>
-      <stop offset="50%" stop-color="#f5c2e7"/>
-      <stop offset="100%" stop-color="#74c7ec"/>
-    </linearGradient>
-  </defs>
-  <text x="16" y="22" font-family="'Courier New', monospace" font-size="17" font-weight="800" fill="url(#g)" text-anchor="middle" letter-spacing="-1">O</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<rect width="100" height="100" fill="#11111b" rx="12"/>
+<defs><linearGradient id="g" x1="15" y1="79" x2="75" y2="17" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#cba6f7"/><stop offset="50%" stop-color="#f5c2e7"/><stop offset="100%" stop-color="#74c7ec"/></linearGradient><radialGradient id="gl" cx="50" cy="21" r="30" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#cba6f7" stop-opacity="0.12"/><stop offset="100%" stop-color="#cba6f7" stop-opacity="0"/></radialGradient></defs>
+<circle cx="50" cy="21" r="30" fill="url(#gl)"/>
+<path d="M15 79L28 66L28 45" stroke="url(#g)" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+<path d="M28 45L50 23L50 21" stroke="url(#g)" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+<path d="M50 21L72 43L72 45" stroke="url(#g)" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+<path d="M72 45L85 58L85 79" stroke="url(#g)" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+<path d="M15 79L85 79" stroke="url(#g)" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+<circle cx="15" cy="79" r="4.8" fill="#11111b" stroke="url(#g)" stroke-width="1.6"/>
+<circle cx="15" cy="79" r="1.9" fill="url(#g)"/>
+<circle cx="28" cy="45" r="4.8" fill="#11111b" stroke="url(#g)" stroke-width="1.6"/>
+<circle cx="28" cy="45" r="1.9" fill="url(#g)"/>
+<circle cx="50" cy="21" r="4.8" fill="#11111b" stroke="url(#g)" stroke-width="1.6"/>
+<circle cx="50" cy="21" r="1.9" fill="url(#g)"/>
+<circle cx="72" cy="45" r="4.8" fill="#11111b" stroke="url(#g)" stroke-width="1.6"/>
+<circle cx="72" cy="45" r="1.9" fill="url(#g)"/>
+<circle cx="85" cy="79" r="4.8" fill="#11111b" stroke="url(#g)" stroke-width="1.6"/>
+<circle cx="85" cy="79" r="1.9" fill="url(#g)"/>
 </svg>
