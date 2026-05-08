@@ -13,7 +13,7 @@ export const softwareProjectsEs: Project[] = [
     title: 'ZentoPath',
     subtitle: 'Divulgación Técnica · YouTube',
     description:
-      'Plataforma de divulgación técnica centrada en el análisis crítico del software, la evolución histórica de la informática y ensayos sobre privacidad y soberanía digital. Cada pieza es un ensayo visual que deconstruye tecnologías, patrones industriales y filosofías de diseño desde una perspectiva independiente — sin conflictos de interés.',
+      'Canal de divulgación técnica con una premisa central: lo que usas no es realmente tuyo. Cada pieza deconstruye la obsolescencia programada, el verdadero costo de lo "gratuito" y los mecanismos por los que la industria retiene el control sobre tus herramientas digitales — desde una perspectiva independiente, sin conflictos de interés.',
     tags: ['🛡️ Privacidad', '📽️ Video', '✍️ Ensayo', '📜 Historia Tech'],
     accent: 'sapphire',
     status: 'active',
@@ -35,7 +35,7 @@ export const softwareProjectsEn: Project[] = [
     title: 'ZentoPath',
     subtitle: 'Technical Outreach · YouTube',
     description:
-      'Technical outreach platform focused on critical analysis of software creation, the historical evolution of computing, and essays on privacy and digital sovereignty. Each piece is a visual essay that deconstructs technologies, industry patterns, and design philosophies from an independent perspective — no conflicts of interest.',
+      'Technical outreach channel built on a central premise: what you use isn\'t really yours. Each piece deconstructs planned obsolescence, the real cost of "free", and the mechanisms by which the industry retains control over your digital tools — from an independent perspective, no conflicts of interest.',
     tags: ['🛡️ Privacy', '📽️ Video', '✍️ Essay', '📜 Tech History'],
     accent: 'sapphire',
     status: 'active',
