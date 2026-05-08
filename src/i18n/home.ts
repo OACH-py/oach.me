@@ -26,6 +26,13 @@ export interface HomeT {
   philoAnd: string;
   philoTail: string;
   axioms: AxiomData[];
+  stackLabel: string;
+  exploringLabel: string;
+  focusLabel: string;
+  contactBtn: string;
+  sec04: string;
+  contactTitle: string;
+  contactDesc: string;
 }
 
 export const homeT: Record<Lang, HomeT> = {
@@ -52,6 +59,13 @@ export const homeT: Record<Lang, HomeT> = {
       { num: '03', title: 'Техническая<br />прозрачность', color: 'teal',     label: 'Честность системы',       desc: 'ПО должно быть явным в своих действиях и свободным от <em>скрытой телеметрии</em>. Процессы наблюдаемы и поддаются аудиту.' },
       { num: '04', title: 'Устойчивая<br />модульность',   color: 'peach',    label: 'Взаимозаменяемость',      desc: 'Компоненты, заменяемые по выбору пользователя, активно противостоящие <em>запланированному устареванию</em> посредством модульного дизайна.' },
     ],
+    stackLabel:     'Стек',
+    exploringLabel: 'Изучаю',
+    focusLabel:     'Область фокуса',
+    contactBtn:     'Контакт',
+    sec04:        '04 — Контакт',
+    contactTitle: 'Напишите мне',
+    contactDesc:  'Если у вас есть проект, идея или просто вопрос — пишите напрямую.',
   },
   es: {
     heroParagraph: 'Estudiante de Ingeniería Electrónica · Defensor FOSS · Soberanía Digital',
@@ -76,6 +90,13 @@ export const homeT: Record<Lang, HomeT> = {
       { num: '03', title: 'Transparencia<br />Técnica', color: 'teal',     label: 'Honestidad del Sistema',       desc: 'El software debe ser explícito en sus acciones y libre de <em>telemetría oculta</em>. Los procesos son observables y auditables.' },
       { num: '04', title: 'Modularidad<br />Sostenible',color: 'peach',    label: 'Diseñado para el Intercambio', desc: 'Componentes intercambiables por elección del usuario, resistiendo activamente la <em>obsolescencia programada</em> mediante diseño modular.' },
     ],
+    stackLabel:     'Stack',
+    exploringLabel: 'Explorando',
+    focusLabel:     'Área de enfoque',
+    contactBtn:     'Contacto',
+    sec04:        '04 — Contacto',
+    contactTitle: '¿Hablamos?',
+    contactDesc:  'Si tienes un proyecto, una idea o simplemente una pregunta — escribe directo.',
   },
   en: {
     heroParagraph: 'Electronics Engineering Student · FOSS Advocate · Digital Sovereignty',
@@ -100,5 +121,12 @@ export const homeT: Record<Lang, HomeT> = {
       { num: '03', title: 'Technical<br />Transparency',  color: 'teal',     label: 'System Honesty',        desc: 'Software must be explicit in its actions and free of <em>hidden telemetry</em>. Processes are observable and auditable.' },
       { num: '04', title: 'Sustainable<br />Modularity',  color: 'peach',    label: 'Swappable by Design',   desc: 'Components swappable by user choice, actively resisting <em>planned obsolescence</em> through modular design.' },
     ],
+    stackLabel:     'Stack',
+    exploringLabel: 'Exploring',
+    focusLabel:     'Focus area',
+    contactBtn:     'Contact',
+    sec04:        '04 — Contact',
+    contactTitle: 'Get in touch',
+    contactDesc:  'Have a project, an idea, or just a question — reach out directly.',
   },
 };

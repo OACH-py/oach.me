@@ -40,6 +40,16 @@ export const softwareProjectsEs: Project[] = [
     status: 'active',
     link: 'https://github.com/OACH-py/oach.me',
   },
+  {
+    title: 'Media Server Stack',
+    subtitle: 'Infraestructura Docker · Self-hosted',
+    description:
+      'Stack Docker Compose para servidor multimedia doméstico. Orquesta qBittorrent, Radarr, Sonarr, Prowlarr, Jellyfin, Jellyseerr y Bazarr con configuración centralizada en variables de entorno. Sin dependencias externas, sin telemetría.',
+    tags: ['🐳 Docker', '📦 Compose', '🎬 Self-hosted', '🔓 Open Source'],
+    accent: 'teal',
+    status: 'complete',
+    link: 'https://github.com/OACH-py/media-server-stack',
+  },
 ];
 
 export const softwareProjectsRu: Project[] = [
@@ -72,6 +82,16 @@ export const softwareProjectsRu: Project[] = [
     accent: 'teal',
     status: 'active',
     link: 'https://github.com/OACH-py/oach.me',
+  },
+  {
+    title: 'Media Server Stack',
+    subtitle: 'Docker-инфраструктура · Self-hosted',
+    description:
+      'Docker Compose стек для домашнего медиасервера. Оркестрирует qBittorrent, Radarr, Sonarr, Prowlarr, Jellyfin, Jellyseerr и Bazarr с централизованной конфигурацией через переменные окружения. Без внешних зависимостей, без телеметрии.',
+    tags: ['🐳 Docker', '📦 Compose', '🎬 Self-hosted', '🔓 Open Source'],
+    accent: 'teal',
+    status: 'complete',
+    link: 'https://github.com/OACH-py/media-server-stack',
   },
 ];
 
@@ -106,5 +126,14 @@ export const softwareProjectsEn: Project[] = [
     status: 'active',
     link: 'https://github.com/OACH-py/oach.me',
   },
+  {
+    title: 'Media Server Stack',
+    subtitle: 'Docker Infrastructure · Self-hosted',
+    description:
+      'Docker Compose stack for a home media server. Orchestrates qBittorrent, Radarr, Sonarr, Prowlarr, Jellyfin, Jellyseerr and Bazarr with centralized env-based config. No external dependencies, no telemetry.',
+    tags: ['🐳 Docker', '📦 Compose', '🎬 Self-hosted', '🔓 Open Source'],
+    accent: 'teal',
+    status: 'complete',
+    link: 'https://github.com/OACH-py/media-server-stack',
+  },
 ];
-

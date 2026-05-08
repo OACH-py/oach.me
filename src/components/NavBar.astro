@@ -8,18 +8,21 @@ const navLinksEs = [
   { href: '#zento',     label: 'Proyectos'  },
   { href: '#notes',     label: 'Ingeniería' },
   { href: '#filosofia', label: 'Filosofía'  },
+  { href: '#contact',   label: 'Contacto'   },
 ];
 
 const navLinksEn = [
   { href: '#zento',     label: 'Projects'    },
   { href: '#notes',     label: 'Engineering' },
   { href: '#filosofia', label: 'Philosophy'  },
+  { href: '#contact',   label: 'Contact'     },
 ];
 
 const navLinksRu = [
   { href: '#zento',     label: 'Проекты'        },
   { href: '#notes',     label: 'Инженерия'       },
   { href: '#filosofia', label: 'Философия'       },
+  { href: '#contact',   label: 'Контакт'         },
 ];
 
 const navLinks = lang === 'ru' ? navLinksRu : lang === 'en' ? navLinksEn : navLinksEs;
@@ -115,7 +118,6 @@ const homeHref = langOptions.find(l => l.code === lang)!.href;
     display: block;
     width: 36px;
     height: 36px;
-    border-radius: 8px;
   }
 
   /* Desktop: centred inline links */

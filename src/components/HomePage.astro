@@ -12,7 +12,7 @@ const { lang } = Astro.props;
 
 const projectsMap = { es: softwareProjectsEs, en: softwareProjectsEn, ru: softwareProjectsRu };
 const projects = projectsMap[lang];
-const [zentopath, kansoBase, oachmeBase] = projects;
+const [zentopath, kansoBase, oachmeBase, mediaServer] = projects;
 
 const [kansoLangs, oachLangs] = await Promise.all([
   fetchLangTags(kansoBase.githubRepo!),
@@ -36,7 +36,7 @@ const tx = homeT[lang];
     <nav class="hero-actions" aria-label="Acciones rápidas">
       <a href="#zento" class="btn btn-primary">{tx.heroBtn}</a>
       <a href="https://github.com/OACH-py" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-      <a href="https://youtube.com/@ZentoPath" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">ZentoPath ↗</a>
+      <a href="mailto:contact@oach.me" class="btn btn-ghost">{tx.contactBtn}</a>
     </nav>
 
   </div>
@@ -47,30 +47,41 @@ const tx = homeT[lang];
 
   <span class="section-label" id="projects-heading" data-reveal>{tx.sec01}</span>
 
-  <div class="glass glass-featured tilt-card featured-card" data-reveal style="--reveal-delay: 0.05s">
-    <div class="feat-header">
-      <div class="feat-identity">
+  <div class="bento-grid">
+
+    <!-- ZentoPath — celda grande, 2 columnas -->
+    <div class="glass glass-featured tilt-card featured-card bento-featured" data-reveal style="--reveal-delay: 0.05s">
+      <div class="feat-header">
         <div>
           <span class="feat-eyebrow">{tx.flagship}</span>
           <h2 class="feat-title grad-text-hero">ZentoPath</h2>
           <p class="feat-meta">{tx.featMeta}</p>
         </div>
+        <a href="https://youtube.com/@ZentoPath" class="btn btn-primary feat-cta" target="_blank" rel="noopener noreferrer">
+          {tx.viewChan}
+        </a>
       </div>
-      <a href="https://youtube.com/@ZentoPath" class="btn btn-primary feat-cta" target="_blank" rel="noopener noreferrer">
-        {tx.viewChan}
-      </a>
+      <p class="feat-desc">{zentopath.description}</p>
+      <div class="tags" aria-label="Tecnologías">
+        {zentopath.tags.map(t => <span class="tag tag-sapphire">{t}</span>)}
+      </div>
     </div>
 
-    <p class="feat-desc">{zentopath.description}</p>
-
-    <div class="tags" aria-label="Tecnologías">
-      {zentopath.tags.map(t => <span class="tag tag-sapphire">{t}</span>)}
+    <!-- Kansō — columna derecha, abarca 2 filas -->
+    <div class="bento-slot bento-tall" data-reveal style="--reveal-delay: 0.10s">
+      <ProjectCard project={kanso} lang={lang} />
     </div>
-  </div>
 
-  <div class="project-row" data-reveal style="--reveal-delay: 0.12s">
-    <ProjectCard project={kanso}  lang={lang} />
-    <ProjectCard project={oachme} lang={lang} />
+    <!-- Media Server — fila 2, col 1 -->
+    <div class="bento-slot" data-reveal style="--reveal-delay: 0.15s">
+      <ProjectCard project={mediaServer} lang={lang} />
+    </div>
+
+    <!-- oach.me — fila 2, col 2 -->
+    <div class="bento-slot" data-reveal style="--reveal-delay: 0.20s">
+      <ProjectCard project={oachme} lang={lang} />
+    </div>
+
   </div>
 
 </section>
@@ -82,13 +93,51 @@ const tx = homeT[lang];
 
   <span class="section-label" id="eng-heading" data-reveal>{tx.sec02}</span>
 
-  <div class="glass tilt-card eng-card" data-reveal style="--reveal-delay: 0.08s">
-    <h2 class="eng-title grad-text-hero">{tx.engTitle}</h2>
-    <p class="eng-desc">{tx.engP1}</p>
-    <p class="eng-desc">
-      {tx.engP2}
-      <strong class="accent-teal">{tx.engSpec}</strong>{tx.engP2tail}
-    </p>
+  <div class="eng-grid">
+
+    <!-- Tarjeta narrativa -->
+    <div class="glass tilt-card eng-card" data-reveal style="--reveal-delay: 0.06s">
+      <h2 class="eng-title grad-text-hero">{tx.engTitle}</h2>
+      <p class="eng-desc">{tx.engP1}</p>
+      <p class="eng-desc">
+        {tx.engP2}
+        <strong class="accent-teal">{tx.engSpec}</strong>{tx.engP2tail}
+      </p>
+    </div>
+
+    <!-- Tarjeta de stack -->
+    <div class="glass tilt-card eng-stack-card" data-reveal style="--reveal-delay: 0.12s">
+
+      <div class="eng-stack-group">
+        <span class="eng-stack-label">{tx.stackLabel}</span>
+        <div class="tags">
+          <span class="tag tag-mauve">Arch Linux</span>
+          <span class="tag tag-peach">🦀 Rust</span>
+          <span class="tag tag-sapphire">🐍 Python</span>
+          <span class="tag tag-teal">🐳 Docker</span>
+          <span class="tag tag-neutral">Zed</span>
+          <span class="tag tag-neutral">VS Code</span>
+        </div>
+      </div>
+
+      <div class="eng-stack-group">
+        <span class="eng-stack-label">{tx.exploringLabel}</span>
+        <div class="tags">
+          <span class="tag tag-peach">PCB Design</span>
+          <span class="tag tag-mauve">IA / Agentes</span>
+        </div>
+      </div>
+
+      <div class="eng-stack-group">
+        <span class="eng-stack-label">{tx.focusLabel}</span>
+        <div class="tags">
+          <span class="tag tag-teal">Control & Automatización</span>
+          <span class="tag tag-sapphire">Sistemas Embebidos</span>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
 </section>
@@ -118,6 +167,24 @@ const tx = homeT[lang];
         <p class="axiom-desc" set:html={a.desc} />
       </article>
     ))}
+  </div>
+
+</section>
+
+<hr class="divider container" />
+
+<!-- CONTACT -->
+<section id="contact" class="section container" aria-labelledby="contact-heading">
+
+  <span class="section-label" id="contact-heading" data-reveal>{tx.sec04}</span>
+
+  <div class="glass tilt-card contact-card" data-reveal style="--reveal-delay: 0.05s">
+    <h2 class="contact-title grad-text-hero">{tx.contactTitle}</h2>
+    <p class="contact-desc">{tx.contactDesc}</p>
+    <div class="contact-links">
+      <a href="mailto:contact@oach.me" class="contact-pill">contact@oach.me</a>
+      <a href="https://github.com/OACH-py" class="contact-pill" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
   </div>
 
 </section>
@@ -196,26 +263,39 @@ const tx = homeT[lang];
     margin-bottom: var(--sp-8);
   }
 
-  /* ── ZentoPath featured card ──────────────────────────────────────── */
-  .featured-card {
-    padding: var(--sp-10);
+  /* ── Bento grid ───────────────────────────────────────────────────── */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-4);
+  }
+
+  .bento-featured { grid-column: 1 / 3; }
+  .bento-tall     { grid-row: span 2; }
+
+  .bento-slot {
     display: flex;
     flex-direction: column;
-    gap: var(--sp-6);
+  }
+
+  .bento-slot :global(.project-card) {
+    flex: 1;
+  }
+
+  /* ── ZentoPath featured card ──────────────────────────────────────── */
+  .featured-card {
+    padding: var(--sp-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
   }
 
   .feat-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: var(--sp-6);
-    flex-wrap: wrap;
-  }
-
-  .feat-identity {
-    display: flex;
-    align-items: flex-start;
     gap: var(--sp-4);
+    flex-wrap: wrap;
   }
 
   .feat-eyebrow {
@@ -229,7 +309,7 @@ const tx = homeT[lang];
 
   .feat-title {
     font-weight: 800;
-    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
     letter-spacing: -0.03em;
   }
 
@@ -242,25 +322,26 @@ const tx = homeT[lang];
   .feat-cta { align-self: flex-start; }
 
   .feat-desc {
-    font-size: 0.97rem;
+    font-size: 0.93rem;
     line-height: 1.78;
     color: var(--text);
     opacity: 0.86;
-    max-width: 700px;
   }
 
-  /* ── Project row ──────────────────────────────────────────────────── */
-  .project-row {
-    margin-top: var(--sp-6);
+  /* ── Engineering layout ──────────────────────────────────────────── */
+  .eng-grid {
     display: grid;
-    /* min() prevents overflow on narrow viewports */
-    grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
-    gap: var(--sp-6);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+    align-items: start;
   }
 
-  /* ── Engineering card ─────────────────────────────────────────────── */
+  @media (max-width: 700px) {
+    .eng-grid { grid-template-columns: 1fr; }
+  }
+
   .eng-card {
-    padding: var(--sp-10);
+    padding: var(--sp-8);
     display: flex;
     flex-direction: column;
     gap: var(--sp-6);
@@ -268,16 +349,36 @@ const tx = homeT[lang];
 
   .eng-title {
     font-weight: 800;
-    font-size: clamp(1.4rem, 3vw, 1.85rem);
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
     letter-spacing: -0.03em;
   }
 
   .eng-desc {
-    font-size: 0.95rem;
-    line-height: 1.78;
+    font-size: 0.92rem;
+    line-height: 1.85;
     color: var(--text);
     opacity: 0.82;
-    max-width: 700px;
+  }
+
+  /* ── Engineering stack card ───────────────────────────────────────── */
+  .eng-stack-card {
+    padding: var(--sp-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+  }
+
+  .eng-stack-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .eng-stack-label {
+    font-size: 0.68rem;
+    color: var(--overlay1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
   /* ── Axioms grid — mobile-first ───────────────────────────────────── */
@@ -341,6 +442,18 @@ const tx = homeT[lang];
     opacity: 1;
   }
 
+  /* ── Bento responsive ────────────────────────────────────────────── */
+  @media (max-width: 860px) {
+    .bento-grid             { grid-template-columns: repeat(2, 1fr); }
+    .bento-featured         { grid-column: 1 / 3; }
+    .bento-tall             { grid-row: auto; }
+  }
+
+  @media (max-width: 560px) {
+    .bento-grid             { grid-template-columns: 1fr; }
+    .bento-featured         { grid-column: 1; }
+  }
+
   /* ── Mobile overrides ─────────────────────────────────────────────── */
   @media (max-width: 768px) {
     .hero          { padding: var(--sp-16) 0; }
@@ -350,8 +463,6 @@ const tx = homeT[lang];
     .axiom-card    { padding: var(--sp-6); }
   }
 
-  /* Pantallas estrechas: asimetría vertical/horizontal en tarjetas
-     para maximizar el área de texto sin tocar los bordes.           */
   @media (max-width: 480px) {
     .featured-card,
     .eng-card   { padding: var(--sp-6) var(--sp-4); }
@@ -365,5 +476,60 @@ const tx = homeT[lang];
     .hero         { padding: var(--sp-12) 0; }
     .hero-actions { flex-direction: column; align-items: center; }
     .hero-sub     { font-size: 0.75rem; }
+  }
+
+  /* ── Contact card ─────────────────────────────────────────────────── */
+  .contact-card {
+    padding: var(--sp-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    max-width: 640px;
+  }
+
+  .contact-title {
+    font-weight: 800;
+    font-size: clamp(1.4rem, 3vw, 1.85rem);
+    letter-spacing: -0.03em;
+  }
+
+  .contact-desc {
+    font-size: 0.95rem;
+    line-height: 1.78;
+    color: var(--text);
+    opacity: 0.82;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+
+  .contact-pill {
+    display: inline-block;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--mauve);
+    text-decoration: none;
+    border: 1px solid rgba(203, 166, 247, 0.25);
+    border-radius: 6px;
+    padding: 0.45em 0.9em;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .contact-pill:hover {
+    background: rgba(203, 166, 247, 0.08);
+    border-color: rgba(203, 166, 247, 0.50);
+    color: var(--text);
+  }
+
+  @media (max-width: 768px) {
+    .contact-card { padding: var(--sp-6); }
+  }
+
+  @media (max-width: 480px) {
+    .contact-card { padding: var(--sp-6) var(--sp-4); }
   }
 </style>
