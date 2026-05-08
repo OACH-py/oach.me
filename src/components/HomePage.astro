@@ -1,6 +1,7 @@
 ---
 import ProjectCard from './ProjectCard.astro';
 import { softwareProjectsEs, softwareProjectsEn } from '../data/projects';
+import { fetchLangTags, STATIC_TAGS } from '../lib/github';
 
 interface Props {
   lang: 'es' | 'en';
@@ -9,7 +10,15 @@ interface Props {
 const { lang } = Astro.props;
 
 const projects = lang === 'es' ? softwareProjectsEs : softwareProjectsEn;
-const [zentopath, kanso, oachme] = projects;
+const [zentopath, kansoBase, oachmeBase] = projects;
+
+const [kansoLangs, oachLangs] = await Promise.all([
+  fetchLangTags(kansoBase.githubRepo!),
+  fetchLangTags(oachmeBase.githubRepo!),
+]);
+
+const kanso  = { ...kansoBase,  tags: [...kansoLangs,  ...STATIC_TAGS] };
+const oachme = { ...oachmeBase, tags: [...oachLangs,   ...STATIC_TAGS] };
 
 const t = {
   es: {

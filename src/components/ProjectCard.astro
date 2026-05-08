@@ -29,7 +29,7 @@ const statusLabel = statusLabels[lang][project.status];
   <p class="card-desc">{project.description}</p>
 
   <div class="tags">
-    {project.tags.map(t => (
+    {(project.tags ?? []).map(t => (
       <span class:list={['tag', `tag-${project.accent}`]}>{t}</span>
     ))}
   </div>

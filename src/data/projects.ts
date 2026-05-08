@@ -2,7 +2,8 @@ export interface Project {
   title: string;
   subtitle: string;
   description: string;
-  tags: string[];
+  tags?: string[];
+  githubRepo?: string;
   accent: 'mauve' | 'sapphire' | 'teal';
   status: 'active' | 'planned' | 'complete';
   link?: string;
@@ -24,7 +25,7 @@ export const softwareProjectsEs: Project[] = [
     subtitle: 'Lector de Manga TUI · Alto Rendimiento',
     description:
       'Lector de manga de alto rendimiento bajo una arquitectura híbrida Rust + Python. El núcleo de procesamiento de imágenes y el motor de caché están escritos en Rust para rendimiento máximo y seguridad de memoria; Python gestiona la lógica de scraping y metadatos. Interfaz TUI minimalista: cero dependencias de GUI, cero telemetría, principio KISS aplicado sin excepciones.',
-    tags: ['🦀 Rust', '🐍 Python', '🖥️ TUI', '⚡ KISS', '⌨️ CLI'],
+    githubRepo: 'OACH-py/Kanso',
     accent: 'mauve',
     status: 'active',
     link: 'https://github.com/OACH-py/Kanso',
@@ -34,7 +35,7 @@ export const softwareProjectsEs: Project[] = [
     subtitle: 'Este sitio · Código Abierto',
     description:
       'El código fuente de este sitio es público. No como gesto, sino como práctica: si defiendo la transparencia técnica y los procesos auditables, lo mínimo es que mi propio stack sea inspeccionable. Construido con Astro y TypeScript, sin rastreadores ni dependencias externas en tiempo de ejecución.',
-    tags: ['🌐 Astro', '🔷 TypeScript', '🔓 Open Source', '🛡️ Sin rastreadores'],
+    githubRepo: 'OACH-py/oach.me',
     accent: 'teal',
     status: 'active',
     link: 'https://github.com/OACH-py/oach.me',
@@ -57,7 +58,7 @@ export const softwareProjectsEn: Project[] = [
     subtitle: 'High-Performance Manga TUI Reader',
     description:
       'High-performance manga reader built on a hybrid Rust + Python architecture. The image processing core and cache engine are written in Rust for maximum throughput and memory safety; Python handles scraping logic and metadata. Minimalist TUI interface with zero GUI dependencies, zero telemetry — KISS applied without exception.',
-    tags: ['🦀 Rust', '🐍 Python', '🖥️ TUI', '⚡ KISS', '⌨️ CLI'],
+    githubRepo: 'OACH-py/Kanso',
     accent: 'mauve',
     status: 'active',
     link: 'https://github.com/OACH-py/Kanso',
@@ -67,7 +68,7 @@ export const softwareProjectsEn: Project[] = [
     subtitle: 'This site · Open Source',
     description:
       'The source code for this site is public. Not as a gesture, but as practice: if I advocate for technical transparency and auditable processes, the least I can do is make my own stack inspectable. Built with Astro and TypeScript, no trackers, no external runtime dependencies.',
-    tags: ['🌐 Astro', '🔷 TypeScript', '🔓 Open Source', '🛡️ No trackers'],
+    githubRepo: 'OACH-py/oach.me',
     accent: 'teal',
     status: 'active',
     link: 'https://github.com/OACH-py/oach.me',
