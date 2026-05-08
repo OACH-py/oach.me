@@ -9,18 +9,21 @@ const t = {
     source:   'Código fuente',
     license:  'Licencia MIT',
     privacy:  'Sin Telemetría · Privacidad Proactiva',
+    origin:   'Hecho en México 🇲🇽',
   },
   en: {
     madeWith: 'Built with Astro',
     source:   'Source code',
     license:  'MIT License',
     privacy:  'No Telemetry · Proactive Privacy',
+    origin:   'Made in Mexico 🇲🇽',
   },
   ru: {
     madeWith: 'Построен на Astro',
     source:   'Исходный код',
     license:  'Лицензия MIT',
     privacy:  'Без телеметрии · Проактивная приватность',
+    origin:   'Сделано в Мексике 🇲🇽',
   },
 } as const;
 
@@ -62,6 +65,7 @@ const tx = t[lang];
       >{tx.license}</a>
       <span>{tx.privacy}</span>
       <span class="footer-meta-arch">I use Arch, btw</span>
+      <span>{tx.origin}</span>
     </small>
 
   </div>

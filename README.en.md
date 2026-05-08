@@ -147,6 +147,6 @@ No environment variables are required. The GitHub API is public for unauthentica
 
 ## License
 
-[MIT](./LICENSE) — © 2026 Osvaldo A. (OACH)
+[MIT](./LICENSE) — © 2026 Osvaldo A. (OACH) · Made in Mexico 🇲🇽
 
 > The code is free. The philosophy behind it is too.

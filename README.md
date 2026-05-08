@@ -149,6 +149,6 @@ sin autenticación (límite de 60 req/h por IP — suficiente para cualquier bui
 
 ## Licencia
 
-[MIT](./LICENSE) — © 2026 Osvaldo A. (OACH)
+[MIT](./LICENSE) — © 2026 Osvaldo A. (OACH) · Hecho en México 🇲🇽
 
 > El código es libre. La filosofía detrás de él también.

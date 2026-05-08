@@ -147,6 +147,6 @@ npm run preview  # предпросмотр сборки
 
 ## Лицензия
 
-[MIT](./LICENSE) — © 2026 Osvaldo A. (OACH)
+[MIT](./LICENSE) — © 2026 Osvaldo A. (OACH) · Сделано в Мексике 🇲🇽
 
 > Код свободен. Философия за ним — тоже.
