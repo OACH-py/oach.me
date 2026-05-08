@@ -6,8 +6,16 @@
   font-family: var(--font);
 }
 
+/* ── Focus ring (keyboard-only) ──────────────────────────────────────── */
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--mauve);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* ── Base ────────────────────────────────────────────────────────────── */
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   background-color: var(--crust);
@@ -17,6 +25,7 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   padding-top: var(--nav-height);
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -49,8 +58,14 @@ body {
 section[id] { scroll-margin-top: var(--nav-height); }
 
 /* ── Section spacing ─────────────────────────────────────────────────── */
-.section    { padding: var(--sp-20) 0; }
-.section-sm { padding: var(--sp-12) 0; }
+/* padding-block: no sobreescribe el padding-inline de .container        */
+.section    { padding-block: var(--sp-20); }
+.section-sm { padding-block: var(--sp-12); }
+
+@media (max-width: 600px) {
+  .section    { padding-block: var(--sp-16); }
+  .section-sm { padding-block: var(--sp-8);  }
+}
 
 /* ── Code block ──────────────────────────────────────────────────────── */
 .code-block {
@@ -75,6 +90,23 @@ section[id] { scroll-margin-top: var(--nav-height); }
   border-top: 1px solid rgba(203, 166, 247, 0.08);
   margin: var(--sp-16) 0;
 }
+
+/* ── Skip link for keyboard navigation ──────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--sp-4);
+  background: var(--mantle);
+  color: var(--mauve);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--radius-btn);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: var(--sp-4); }
 
 /* ── Main layer above ambient orbs ──────────────────────────────────── */
 main { position: relative; z-index: 1; }

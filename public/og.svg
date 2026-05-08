@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#11111b"/>
+      <stop offset="100%" stop-color="#181825"/>
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="800" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"   stop-color="#cba6f7"/>
+      <stop offset="28%"  stop-color="#f5c2e7"/>
+      <stop offset="60%"  stop-color="#74c7ec"/>
+      <stop offset="100%" stop-color="#94e2d5"/>
+    </linearGradient>
+    <radialGradient id="orb1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#cba6f7" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#cba6f7" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#74c7ec" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#74c7ec" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#f5c2e7" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#f5c2e7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Ambient orbs -->
+  <ellipse cx="150"  cy="180"  rx="420" ry="370" fill="url(#orb1)"/>
+  <ellipse cx="1080" cy="500"  rx="380" ry="320" fill="url(#orb2)"/>
+  <ellipse cx="650"  cy="80"   rx="260" ry="200" fill="url(#orb3)"/>
+
+  <!-- Outer border -->
+  <rect x="1" y="1" width="1198" height="628" fill="none"
+        stroke="rgba(203,166,247,0.18)" stroke-width="2"/>
+
+  <!-- Inner accent line top -->
+  <line x1="60" y1="60" x2="1140" y2="60"
+        stroke="rgba(203,166,247,0.08)" stroke-width="1"/>
+  <!-- Inner accent line bottom -->
+  <line x1="60" y1="570" x2="1140" y2="570"
+        stroke="rgba(116,199,236,0.08)" stroke-width="1"/>
+
+  <!-- Corner marks -->
+  <path d="M60,60 L90,60 M60,60 L60,90"   stroke="rgba(203,166,247,0.35)" stroke-width="2" fill="none"/>
+  <path d="M1140,60 L1110,60 M1140,60 L1140,90"  stroke="rgba(203,166,247,0.35)" stroke-width="2" fill="none"/>
+  <path d="M60,570 L90,570 M60,570 L60,540"      stroke="rgba(116,199,236,0.35)" stroke-width="2" fill="none"/>
+  <path d="M1140,570 L1110,570 M1140,570 L1140,540" stroke="rgba(116,199,236,0.35)" stroke-width="2" fill="none"/>
+
+  <!-- Main title -->
+  <text x="600" y="330"
+    font-family="'Courier New', Courier, monospace"
+    font-size="220"
+    font-weight="800"
+    fill="url(#title)"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    letter-spacing="-0.06em">OACH</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="438"
+    font-family="'Courier New', Courier, monospace"
+    font-size="22"
+    fill="#7f849c"
+    text-anchor="middle"
+    letter-spacing="0.05em">Ingeniería Electrónica · FOSS · Soberanía Digital</text>
+
+  <!-- Separator -->
+  <line x1="480" y1="472" x2="720" y2="472"
+        stroke="rgba(203,166,247,0.20)" stroke-width="1"/>
+
+  <!-- URL -->
+  <text x="600" y="508"
+    font-family="'Courier New', Courier, monospace"
+    font-size="18"
+    fill="#6c7086"
+    text-anchor="middle"
+    letter-spacing="0.10em">oach.me</text>
+</svg>

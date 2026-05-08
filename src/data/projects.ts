@@ -75,4 +75,3 @@ export const softwareProjectsEn: Project[] = [
   },
 ];
 
-export const softwareProjects = softwareProjectsEs;

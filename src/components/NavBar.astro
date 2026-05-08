@@ -1,9 +1,10 @@
 ---
 const pathname = Astro.url.pathname;
 const lang = pathname.startsWith('/en') ? 'en' : 'es';
-const homeHref  = lang === 'es' ? '/' : '/en/';
-const otherHref = lang === 'es' ? '/en/' : '/';
+const homeHref   = lang === 'es' ? '/' : '/en/';
+const otherHref  = lang === 'es' ? '/en/' : '/';
 const otherLabel = lang === 'es' ? 'EN' : 'ES';
+const menuLabel  = lang === 'es' ? 'Menú' : 'Menu';
 
 const navLinksEs = [
   { href: '#zento',     label: 'Proyectos'  },
@@ -20,13 +21,13 @@ const navLinksEn = [
 const navLinks = lang === 'es' ? navLinksEs : navLinksEn;
 ---
 <header class="site-header" id="site-header">
-  <nav class="container nav-inner">
+  <nav class="container nav-inner" aria-label="Navegación principal">
 
     <a href={homeHref} class="nav-logo" aria-label="Inicio — OACH">
       <span class="nav-wordmark">OACH</span>
     </a>
 
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-menu" role="list">
       {navLinks.map(link => (
         <li><a href={link.href} class="nav-link">{link.label}</a></li>
       ))}
@@ -37,11 +38,24 @@ const navLinks = lang === 'es' ? navLinksEs : navLinksEn;
         href="https://github.com/OACH-py"
         class="nav-gh"
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
+        aria-label="GitHub — OACH-py"
       >GitHub ↗</a>
-      <a href={otherHref} class="lang-toggle" aria-label="Switch language">
+      <a href={otherHref} class="lang-toggle" aria-label={`Switch to ${otherLabel}`}>
         {otherLabel}
       </a>
+      <button
+        class="nav-burger"
+        id="nav-burger"
+        aria-label={menuLabel}
+        aria-expanded="false"
+        aria-controls="nav-menu"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
 
   </nav>
@@ -91,6 +105,7 @@ const navLinks = lang === 'es' ? navLinksEs : navLinksEn;
     letter-spacing: 0.06em;
   }
 
+  /* Desktop: centred inline links */
   .nav-links {
     display: flex;
     gap: var(--sp-6);
@@ -104,6 +119,7 @@ const navLinks = lang === 'es' ? navLinksEs : navLinksEn;
     text-decoration: none;
     transition: color 0.2s ease;
     letter-spacing: 0.01em;
+    padding: var(--sp-1) 0;
   }
 
   .nav-link:hover { color: var(--mauve); }
@@ -148,16 +164,78 @@ const navLinks = lang === 'es' ? navLinksEs : navLinksEn;
     box-shadow: 0 0 16px rgba(203, 166, 247, 0.12);
   }
 
-  @media (max-width: 540px) {
-    .nav-links { gap: var(--sp-3); }
-    .nav-link  { font-size: 0.76rem; }
-    .nav-gh    { display: none; }
+  /* ── Hamburger button ────────────────────────────────────────────── */
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+
+  .nav-burger:hover { background: rgba(203, 166, 247, 0.08); }
+
+  .nav-burger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--overlay1);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform 0.22s ease, opacity 0.22s ease, background 0.2s ease;
+  }
+
+  .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-burger[aria-expanded="true"] span { background: var(--mauve); }
+
+  /* ── Mobile layout ───────────────────────────────────────────────── */
+  @media (max-width: 580px) {
+    .nav-burger { display: flex; }
+    .nav-gh     { display: none; }
+
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      margin: 0;
+      background: rgba(17, 17, 27, 0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(203, 166, 247, 0.10);
+      padding: var(--sp-4) var(--sp-6) var(--sp-6);
+      z-index: 99;
+    }
+
+    .nav-links.is-open { display: flex; }
+
+    .nav-link {
+      font-size: 1rem;
+      padding: var(--sp-4) 0;
+      border-bottom: 1px solid rgba(203, 166, 247, 0.06);
+      display: block;
+    }
+
+    .nav-links li:last-child .nav-link { border-bottom: none; }
   }
 </style>
 
 <script>
+  /* ── Scroll-hide behaviour ─────────────────────────────────────────── */
   const header = document.getElementById('site-header')!;
-  let lastY = window.scrollY;
+  let lastY   = window.scrollY;
   let ticking = false;
 
   window.addEventListener('scroll', () => {
@@ -170,8 +248,34 @@ const navLinks = lang === 'es' ? navLinksEs : navLinksEn;
       } else {
         header.classList.remove('nav-hidden');
       }
-      lastY = y;
+      lastY   = y;
       ticking = false;
     });
   }, { passive: true });
+
+  /* ── Hamburger menu ────────────────────────────────────────────────── */
+  const burger = document.getElementById('nav-burger') as HTMLButtonElement | null;
+  const menu   = document.getElementById('nav-menu')   as HTMLElement | null;
+
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = menu.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(open));
+      header.classList.remove('nav-hidden');
+    });
+
+    menu.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target as Node)) {
+        menu.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 </script>

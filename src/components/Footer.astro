@@ -1,62 +1,181 @@
 ---
 const year = new Date().getFullYear();
 const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
-const madeWith  = lang === 'es' ? 'Hecho con Astro' : 'Built with Astro';
-const sourceLabel = lang === 'es' ? 'Código fuente' : 'Source code';
+
+const t = {
+  es: {
+    madeWith: 'Hecho con Astro',
+    source:   'Código fuente',
+    license:  'Licencia MIT',
+    privacy:  'Sin Telemetría · Privacidad Proactiva',
+  },
+  en: {
+    madeWith: 'Built with Astro',
+    source:   'Source code',
+    license:  'MIT License',
+    privacy:  'No Telemetry · Proactive Privacy',
+  },
+} as const;
+
+const tx = t[lang];
 ---
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <span class="footer-logo">OACH</span>
-    <span class="footer-copy">© {year} · OACH · {madeWith}</span>
-    <div class="footer-links">
-      <a href="https://github.com/OACH-py" class="footer-link" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://youtube.com/@ZentoPath" class="footer-link" target="_blank" rel="noopener">ZentoPath</a>
-      <a href="https://github.com/OACH-py/oach.me" class="footer-link footer-source" target="_blank" rel="noopener">{sourceLabel} ↗</a>
+  <div class="container">
+
+    <!--
+      Fila principal: brand (logo + copyright) a la izquierda,
+      links de navegación a la derecha.
+    -->
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <span class="footer-logo">OACH</span>
+        <small class="footer-copy">© {year} · OACH · {tx.madeWith}</small>
+      </div>
+
+      <nav class="footer-links" aria-label="Links externos">
+        <a href="https://github.com/OACH-py"        class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://youtube.com/@ZentoPath"     class="footer-link" target="_blank" rel="noopener noreferrer">ZentoPath</a>
+        <a href="https://github.com/OACH-py/oach.me" class="footer-link footer-source" target="_blank" rel="noopener noreferrer">{tx.source} ↗</a>
+      </nav>
+
     </div>
+
+    <!--
+      Fila de metadatos legales: una línea horizontal en desktop.
+      Los separadores (·) se generan con ::before para que nunca
+      queden huérfanos al romper línea en pantallas estrechas.
+    -->
+    <small class="footer-meta">
+      <a
+        href="https://github.com/OACH-py/oach.me/blob/main/LICENSE"
+        class="footer-meta-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >{tx.license}</a>
+      <span>{tx.privacy}</span>
+      <span class="footer-meta-arch">I use Arch, btw</span>
+    </small>
+
   </div>
 </footer>
 
 <style>
   .site-footer {
     margin-top: var(--sp-20);
-    padding: var(--sp-8) 0;
+    padding: var(--sp-6) 0 var(--sp-8);
     border-top: 1px solid rgba(203, 166, 247, 0.07);
   }
 
+  /* ── Fila principal ───────────────────────────────────────────────── */
+  /* Desktop: brand izquierda, links derecha en una sola fila           */
   .footer-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--sp-4);
+    gap: var(--sp-6);
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
   }
 
   .footer-logo {
     font-weight: 800;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--mauve);
-    opacity: 0.6;
+    opacity: 0.65;
+    letter-spacing: 0.04em;
   }
 
   .footer-copy {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     color: var(--overlay0);
+    /* <small> tiene un font-size heredado más pequeño; resetear */
+    font-size: 0.75rem;
   }
 
-  .footer-links { display: flex; gap: var(--sp-4); }
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+  }
 
   .footer-link {
     font-size: 0.78rem;
     color: var(--overlay0);
     text-decoration: none;
     transition: color 0.2s ease;
+    white-space: nowrap;
   }
 
   .footer-link:hover { color: var(--mauve); }
 
-  .footer-source {
-    color: var(--teal);
-    opacity: 0.75;
+  .footer-source       { color: var(--teal); opacity: 0.75; }
+  .footer-source:hover { color: var(--teal); opacity: 1;    }
+
+  /* ── Fila de metadatos legales ────────────────────────────────────── */
+  .footer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-top: var(--sp-4);
+    padding-top: var(--sp-3);
+    border-top: 1px solid rgba(203, 166, 247, 0.04);
+    /* Resetear herencia de <small> */
+    font-size: 0.70rem;
+    color: var(--overlay0);
+    opacity: 0.55;
   }
-  .footer-source:hover { color: var(--teal); opacity: 1; }
+
+  /* El · se genera como ::before del item siguiente al primero.
+     Permanece anclado al item que introduce: no puede quedar
+     huérfano al romper línea.                                    */
+  .footer-meta > * + *::before {
+    content: '·';
+    display: inline-block;
+    margin: 0 0.5em;
+    color: var(--surface1);
+  }
+
+  .footer-meta-link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  .footer-meta-link:hover {
+    opacity: 1;
+    color: var(--mauve);
+  }
+
+  .footer-meta-arch { font-style: italic; }
+
+  /* ── Mobile (≤ 580px) ─────────────────────────────────────────────── */
+  @media (max-width: 580px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--sp-4);
+    }
+
+    .footer-brand  { align-items: center; }
+
+    .footer-links  { justify-content: center; flex-wrap: wrap; }
+
+    /* En móvil la línea meta se integra sin borde extra:
+       el footer ya tiene su propio border-top superior.   */
+    .footer-meta {
+      justify-content: center;
+      text-align: center;
+      border-top: none;
+      margin-top: var(--sp-2);
+      padding-top: 0;
+    }
+  }
 </style>

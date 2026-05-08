@@ -8,29 +8,81 @@ interface Props {
   title: string;
   description?: string;
   lang?: 'es' | 'en';
+  image?: string;
 }
 
-const {
-  title,
-  description = 'Ingeniería Electrónica · FOSS · Suckless — OACH',
-  lang = 'es',
-} = Astro.props;
+const { title, lang = 'es', image } = Astro.props;
+
+const description = Astro.props.description ?? (
+  lang === 'en'
+    ? 'OACH — Electronics Engineering · FOSS Advocate · Digital Sovereignty'
+    : 'OACH — Ingeniería Electrónica · Defensor FOSS · Soberanía Digital'
+);
+
+const siteUrl    = (Astro.site?.href ?? 'https://oach.me/').replace(/\/$/, '');
+const canonical  = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage    = image ?? `${siteUrl}/og.svg`;
+const pageTitle  = title === 'OACH' ? 'OACH' : `${title} · OACH`;
+const ogLocale   = lang === 'en' ? 'en_US' : 'es_ES';
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'OACH',
+  url: siteUrl,
+  sameAs: [
+    'https://github.com/OACH-py',
+    'https://youtube.com/@ZentoPath',
+  ],
+  jobTitle: lang === 'en' ? 'Electronics Engineering Student' : 'Estudiante de Ingeniería Electrónica',
+  knowsAbout: ['Electronics Engineering', 'FOSS', 'Embedded Systems', 'Digital Sovereignty'],
+});
 ---
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="author" content="OACH" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={ogImage} />
+    <meta property="og:site_name"   content="OACH" />
+    <meta property="og:locale"      content={ogLocale} />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#11111b" />
-    <title>{title} · OACH</title>
+
+    <!-- Sitemap discovery -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
     <div class="bg-ambient" aria-hidden="true">
@@ -43,8 +95,11 @@ const {
 
     <div class="grain-overlay" aria-hidden="true"></div>
 
+    <a href="#main-content" class="skip-link">
+      {lang === 'en' ? 'Skip to content' : 'Saltar al contenido'}
+    </a>
     <NavBar />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />
