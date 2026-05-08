@@ -21,7 +21,7 @@ const statusLabel = statusLabels[lang][project.status];
       <h3 class="card-title">{project.title}</h3>
       <p class="card-subtitle">{project.subtitle}</p>
     </div>
-    <span class:list={['tag status-tag', project.accent === 'sapphire' ? 'tag-sapphire' : '']}>
+    <span class:list={['tag status-tag', `tag-${project.accent}`]}>
       {statusLabel}
     </span>
   </div>
@@ -30,7 +30,7 @@ const statusLabel = statusLabels[lang][project.status];
 
   <div class="tags">
     {project.tags.map(t => (
-      <span class:list={['tag', project.accent === 'sapphire' ? 'tag-sapphire' : '']}>{t}</span>
+      <span class:list={['tag', `tag-${project.accent}`]}>{t}</span>
     ))}
   </div>
 

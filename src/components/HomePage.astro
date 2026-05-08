@@ -9,7 +9,7 @@ interface Props {
 const { lang } = Astro.props;
 
 const projects = lang === 'es' ? softwareProjectsEs : softwareProjectsEn;
-const [zentopath, kanso] = projects;
+const [zentopath, kanso, oachme] = projects;
 
 const t = {
   es: {
@@ -121,6 +121,7 @@ const tx = t[lang];
 
   <div class="project-row" data-reveal style="--reveal-delay: 0.12s">
     <ProjectCard project={kanso} lang={lang} />
+    <ProjectCard project={oachme} lang={lang} />
   </div>
 
 </section>
