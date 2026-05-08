@@ -7,24 +7,31 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
-  lang?: 'es' | 'en';
+  lang?: 'es' | 'en' | 'ru';
   image?: string;
 }
 
 const { title, lang = 'es', image } = Astro.props;
 
-const description = Astro.props.description ?? (
-  lang === 'en'
-    ? 'OACH — Electronics Engineering · FOSS Advocate · Digital Sovereignty'
-    : 'OACH — Ingeniería Electrónica · Defensor FOSS · Soberanía Digital'
-);
+const defaultDesc: Record<'es' | 'en' | 'ru', string> = {
+  en: 'OACH — Electronics Engineering · FOSS Advocate · Digital Sovereignty',
+  ru: 'OACH — Электронная инженерия · Защитник FOSS · Цифровой суверенитет',
+  es: 'OACH — Ingeniería Electrónica · Defensor FOSS · Soberanía Digital',
+};
+const description = Astro.props.description ?? defaultDesc[lang];
 
 const siteUrl    = (Astro.site?.href ?? 'https://oach.me/').replace(/\/$/, '');
 const canonical  = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage    = image ?? `${siteUrl}/og.svg`;
 const pageTitle  = title === 'OACH' ? 'OACH' : `${title} · OACH`;
-const ogLocale   = lang === 'en' ? 'en_US' : 'es_ES';
+const ogLocaleMap: Record<'es' | 'en' | 'ru', string> = { en: 'en_US', ru: 'ru_RU', es: 'es_ES' };
+const ogLocale   = ogLocaleMap[lang];
 
+const jobTitleMap: Record<'es' | 'en' | 'ru', string> = {
+  en: 'Electronics Engineering Student',
+  ru: 'Студент электронной инженерии',
+  es: 'Estudiante de Ingeniería Electrónica',
+};
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -34,7 +41,7 @@ const jsonLd = JSON.stringify({
     'https://github.com/OACH-py',
     'https://youtube.com/@ZentoPath',
   ],
-  jobTitle: lang === 'en' ? 'Electronics Engineering Student' : 'Estudiante de Ingeniería Electrónica',
+  jobTitle: jobTitleMap[lang],
   knowsAbout: ['Electronics Engineering', 'FOSS', 'Embedded Systems', 'Digital Sovereignty'],
 });
 ---
@@ -96,7 +103,7 @@ const jsonLd = JSON.stringify({
     <div class="grain-overlay" aria-hidden="true"></div>
 
     <a href="#main-content" class="skip-link">
-      {lang === 'en' ? 'Skip to content' : 'Saltar al contenido'}
+      {lang === 'en' ? 'Skip to content' : lang === 'ru' ? 'Перейти к содержимому' : 'Saltar al contenido'}
     </a>
     <NavBar />
     <main id="main-content">

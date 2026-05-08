@@ -1,10 +1,8 @@
 ---
 const pathname = Astro.url.pathname;
-const lang = pathname.startsWith('/en') ? 'en' : 'es';
-const homeHref   = lang === 'es' ? '/' : '/en/';
-const otherHref  = lang === 'es' ? '/en/' : '/';
-const otherLabel = lang === 'es' ? 'EN' : 'ES';
-const menuLabel  = lang === 'es' ? 'Menú' : 'Menu';
+const lang = pathname.startsWith('/en') ? 'en' : pathname.startsWith('/ru') ? 'ru' : 'es';
+
+const menuLabel = lang === 'ru' ? 'Меню' : lang === 'en' ? 'Menu' : 'Menú';
 
 const navLinksEs = [
   { href: '#zento',     label: 'Proyectos'  },
@@ -18,7 +16,21 @@ const navLinksEn = [
   { href: '#filosofia', label: 'Philosophy'  },
 ];
 
-const navLinks = lang === 'es' ? navLinksEs : navLinksEn;
+const navLinksRu = [
+  { href: '#zento',     label: 'Проекты'        },
+  { href: '#notes',     label: 'Инженерия'       },
+  { href: '#filosofia', label: 'Философия'       },
+];
+
+const navLinks = lang === 'ru' ? navLinksRu : lang === 'en' ? navLinksEn : navLinksEs;
+
+const langOptions = [
+  { code: 'es', label: 'ES', href: '/'    },
+  { code: 'en', label: 'EN', href: '/en/' },
+  { code: 'ru', label: 'RU', href: '/ru/' },
+];
+
+const homeHref = langOptions.find(l => l.code === lang)!.href;
 ---
 <header class="site-header" id="site-header">
   <nav class="container nav-inner" aria-label="Navegación principal">
@@ -41,9 +53,13 @@ const navLinks = lang === 'es' ? navLinksEs : navLinksEn;
         rel="noopener noreferrer"
         aria-label="GitHub — OACH-py"
       >GitHub ↗</a>
-      <a href={otherHref} class="lang-toggle" aria-label={`Switch to ${otherLabel}`}>
-        {otherLabel}
-      </a>
+      <div class="lang-group" role="navigation" aria-label="Language / Idioma / Язык">
+        {langOptions.map(l => (
+          l.code === lang
+            ? <span class="lang-badge lang-active" aria-current="true">{l.label}</span>
+            : <a href={l.href} class="lang-badge">{l.label}</a>
+        ))}
+      </div>
       <button
         class="nav-burger"
         id="nav-burger"
@@ -140,28 +156,36 @@ const navLinks = lang === 'es' ? navLinksEs : navLinksEn;
 
   .nav-gh:hover { color: var(--sapphire); }
 
-  .lang-toggle {
-    font-size: 0.70rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: var(--overlay1);
-    text-decoration: none;
-    border: 1px solid rgba(203, 166, 247, 0.28);
-    padding: 0.22em 0.75em;
+  .lang-group {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    border: 1px solid rgba(203, 166, 247, 0.18);
     border-radius: 999px;
-    background: rgba(203, 166, 247, 0.06);
-    transition:
-      color 0.2s ease,
-      border-color 0.2s ease,
-      background 0.2s ease,
-      box-shadow 0.2s ease;
+    padding: 0.12em 0.45em;
+    background: rgba(203, 166, 247, 0.04);
   }
 
-  .lang-toggle:hover {
+  .lang-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    color: var(--overlay0);
+    text-decoration: none;
+    padding: 0.12em 0.38em;
+    border-radius: 999px;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .lang-badge:hover {
     color: var(--mauve);
-    border-color: rgba(203, 166, 247, 0.55);
-    background: rgba(203, 166, 247, 0.14);
-    box-shadow: 0 0 16px rgba(203, 166, 247, 0.12);
+    background: rgba(203, 166, 247, 0.10);
+  }
+
+  .lang-active {
+    color: var(--mauve);
+    background: rgba(203, 166, 247, 0.13);
+    cursor: default;
   }
 
   /* ── Hamburger button ────────────────────────────────────────────── */

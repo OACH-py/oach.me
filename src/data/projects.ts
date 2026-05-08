@@ -42,6 +42,39 @@ export const softwareProjectsEs: Project[] = [
   },
 ];
 
+export const softwareProjectsRu: Project[] = [
+  {
+    title: 'ZentoPath',
+    subtitle: 'Технический канал · YouTube',
+    description:
+      'Технический канал, построенный вокруг одной идеи: то, чем вы пользуетесь, вам на самом деле не принадлежит. Каждый материал разбирает запланированное устаревание, настоящую цену «бесплатного» и механизмы, с помощью которых индустрия сохраняет контроль над вашими цифровыми инструментами — с независимой позиции, без конфликта интересов.',
+    tags: ['🛡️ Приватность', '📽️ Видео', '✍️ Эссе', '📜 История технологий'],
+    accent: 'sapphire',
+    status: 'active',
+    link: 'https://youtube.com/@ZentoPath',
+  },
+  {
+    title: 'Kansō',
+    subtitle: 'Высокопроизводительный TUI-ридер манги',
+    description:
+      'Высокопроизводительный ридер манги на гибридной архитектуре Rust + Python. Ядро обработки изображений и движок кэша написаны на Rust для максимальной скорости и безопасности памяти; Python управляет логикой скрейпинга и метаданными. Минималистичный TUI-интерфейс: без GUI-зависимостей, без телеметрии — принцип KISS без исключений.',
+    githubRepo: 'OACH-py/Kanso',
+    accent: 'mauve',
+    status: 'active',
+    link: 'https://github.com/OACH-py/Kanso',
+  },
+  {
+    title: 'oach.me',
+    subtitle: 'Этот сайт · Открытый код',
+    description:
+      'Исходный код этого сайта публичен. Не как жест, а как практика: если я выступаю за техническую прозрачность и проверяемые процессы, минимум — сделать собственный стек открытым для инспекции. Построен на Astro и TypeScript, без трекеров и внешних зависимостей во время выполнения.',
+    githubRepo: 'OACH-py/oach.me',
+    accent: 'teal',
+    status: 'active',
+    link: 'https://github.com/OACH-py/oach.me',
+  },
+];
+
 export const softwareProjectsEn: Project[] = [
   {
     title: 'ZentoPath',

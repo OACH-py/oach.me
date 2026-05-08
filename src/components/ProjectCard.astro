@@ -3,15 +3,18 @@ import type { Project } from '../data/projects';
 
 interface Props {
   project: Project;
-  lang?: 'es' | 'en';
+  lang?: 'es' | 'en' | 'ru';
 }
 
 const { project, lang = 'es' } = Astro.props;
 
 const statusLabels = {
-  es: { active: 'En desarrollo', planned: 'Próximamente', complete: 'Completo' },
-  en: { active: 'Active',        planned: 'Coming soon',  complete: 'Complete' },
+  es: { active: 'En desarrollo', planned: 'Próximamente', complete: 'Completo'  },
+  en: { active: 'Active',        planned: 'Coming soon',  complete: 'Complete'  },
+  ru: { active: 'Активный',      planned: 'Скоро',        complete: 'Завершён'  },
 };
+
+const ctaLabel = { es: 'Ver proyecto ↗', en: 'View project ↗', ru: 'Открыть ↗' };
 
 const statusLabel = statusLabels[lang][project.status];
 ---
@@ -36,7 +39,7 @@ const statusLabel = statusLabels[lang][project.status];
 
   {project.link && (
     <a href={project.link} class="btn btn-primary card-cta" target="_blank" rel="noopener">
-      {lang === 'es' ? 'Ver proyecto ↗' : 'View project ↗'}
+      {ctaLabel[lang]}
     </a>
   )}
 </article>

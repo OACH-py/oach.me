@@ -2,6 +2,8 @@
 
 > Digital Garden · Hub de Proyectos · Portafolio de Ingeniería Electrónica
 
+[🇬🇧 English](./README.en.md) · [🇷🇺 Русский](./README.ru.md)
+
 Sitio personal de [OACH](https://oach.me) — Ingeniería Electrónica · FOSS · Soberanía Digital.
 Construido con [Astro](https://astro.build) y TypeScript. Sin rastreadores, sin telemetría,
 sin dependencias externas en tiempo de ejecución.
@@ -49,10 +51,10 @@ src/
 │   └── ProjectCard.astro  # Tarjeta de proyecto con efecto tilt 3D (solo hover/pointer:fine)
 │
 ├── data/
-│   └── projects.ts        # Datos de proyectos bilingüe (ES + EN); interfaz Project
+│   └── projects.ts        # Datos de proyectos trilingüe (ES / EN / RU); interfaz Project
 │
 ├── i18n/
-│   └── home.ts            # Todas las cadenas de traducción ES/EN de la home page
+│   └── home.ts            # Todas las cadenas de traducción ES / EN / RU de la home page
 │
 ├── layouts/
 │   └── BaseLayout.astro   # HTML shell: SEO completo (OG, Twitter Card, JSON-LD,
@@ -64,8 +66,10 @@ src/
 ├── pages/
 │   ├── index.astro        # Ruta raíz — ES
 │   ├── 404.astro          # Página de error
-│   └── en/
-│       └── index.astro    # Ruta en inglés — /en/
+│   ├── en/
+│   │   └── index.astro    # Ruta en inglés — /en/
+│   └── ru/
+│       └── index.astro    # Ruta en ruso — /ru/
 │
 └── styles/
     ├── global.css         # Reset, layout, glass system, animaciones, botones, tags

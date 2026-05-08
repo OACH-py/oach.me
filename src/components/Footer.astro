@@ -1,6 +1,7 @@
 ---
 const year = new Date().getFullYear();
-const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
+const pathname = Astro.url.pathname;
+const lang = pathname.startsWith('/en') ? 'en' : pathname.startsWith('/ru') ? 'ru' : 'es';
 
 const t = {
   es: {
@@ -14,6 +15,12 @@ const t = {
     source:   'Source code',
     license:  'MIT License',
     privacy:  'No Telemetry · Proactive Privacy',
+  },
+  ru: {
+    madeWith: 'Построен на Astro',
+    source:   'Исходный код',
+    license:  'Лицензия MIT',
+    privacy:  'Без телеметрии · Проактивная приватность',
   },
 } as const;
 
