@@ -27,6 +27,7 @@ export const softwareProjectsEs: Project[] = [
     tags: ['🦀 Rust', '🐍 Python', '🖥️ TUI', '⚡ KISS', '⌨️ CLI'],
     accent: 'mauve',
     status: 'active',
+    link: 'https://github.com/OACH-py/Kanso',
   },
 ];
 
@@ -49,6 +50,7 @@ export const softwareProjectsEn: Project[] = [
     tags: ['🦀 Rust', '🐍 Python', '🖥️ TUI', '⚡ KISS', '⌨️ CLI'],
     accent: 'mauve',
     status: 'active',
+    link: 'https://github.com/OACH-py/Kanso',
   },
 ];
 
