@@ -2,8 +2,7 @@
 
 > Digital Garden · Hub de Proyectos · Portafolio de Ingeniería Electrónica
 
-Sitio personal de [OACH](https://oach.me) — Estudiante de Ingeniería Electrónica en el
-[Tecnológico de la Laguna](https://www.tl.edu.mx), especialización en Control & Automatización.
+Sitio personal de [OACH](https://oach.me) — Ingeniería Electrónica · FOSS · Soberanía Digital.
 Construido con [Astro](https://astro.build) y TypeScript. Sin rastreadores, sin telemetría,
 sin dependencias externas en tiempo de ejecución.
 
@@ -27,15 +26,15 @@ completo:
 
 ## Stack
 
-| Capa          | Tecnología                        |
-|---------------|-----------------------------------|
-| Framework     | [Astro 4](https://astro.build) — `output: static` |
-| Lenguaje      | TypeScript (strict)               |
-| Estilos       | CSS puro (sin framework, sin build-time preprocessor) |
-| Tipografía    | [Azeret Mono](https://fonts.google.com/specimen/Azeret+Mono) — Google Fonts |
-| Paleta        | Catppuccin Mocha                  |
-| Deploy        | Estático — sin servidor, sin runtime |
-| Sitemap       | `@astrojs/sitemap` — generado en build |
+| Capa       | Tecnología                                                        |
+|------------|-------------------------------------------------------------------|
+| Framework  | [Astro 4](https://astro.build) — `output: static`                |
+| Lenguaje   | TypeScript                                                        |
+| Estilos    | CSS puro — sin framework, sin preprocesador                       |
+| Tipografía | [Azeret Mono](https://fonts.google.com/specimen/Azeret+Mono)      |
+| Paleta     | Catppuccin Mocha                                                  |
+| Deploy     | Estático — sin servidor, sin runtime                              |
+| Sitemap    | `@astrojs/sitemap` — generado en build                            |
 
 ---
 
@@ -44,33 +43,33 @@ completo:
 ```
 src/
 ├── components/
-│   ├── Footer.astro       # Footer con fila de metadatos filosóficos
-│   ├── HomePage.astro     # Composición de las tres secciones principales
-│   ├── NavBar.astro       # Nav fija con hide-on-scroll y hamburger mobile
-│   └── ProjectCard.astro  # Tarjeta de proyecto con tilt 3D (hover, no touch)
+│   ├── Footer.astro       # Footer: fila principal (brand ↔ links) + fila meta centrada
+│   ├── HomePage.astro     # Composición de las tres secciones (Proyectos, Ingeniería, Filosofía)
+│   ├── NavBar.astro       # Nav fija con hide-on-scroll y menú hamburguesa (móvil < 580px)
+│   └── ProjectCard.astro  # Tarjeta de proyecto con efecto tilt 3D (solo hover/pointer:fine)
 │
 ├── data/
-│   └── projects.ts        # Datos de proyectos (ES + EN); tipo `Project`
+│   └── projects.ts        # Datos de proyectos bilingüe (ES + EN); interfaz Project
 │
 ├── i18n/
-│   └── home.ts            # Todas las traducciones ES/EN de la home page
+│   └── home.ts            # Todas las cadenas de traducción ES/EN de la home page
 │
 ├── layouts/
-│   └── BaseLayout.astro   # HTML shell: SEO completo (OG, Twitter Card,
-│                          #   JSON-LD Person schema, canonical, sitemap link)
+│   └── BaseLayout.astro   # HTML shell: SEO completo (OG, Twitter Card, JSON-LD,
+│                          #   canonical, favicon, sitemap link, skip-link)
 │
 ├── lib/
-│   └── github.ts          # Fetch de lenguajes desde la API de GitHub (build-time)
+│   └── github.ts          # Fetch build-time de lenguajes desde la API de GitHub
 │
 ├── pages/
-│   ├── index.astro        # Ruta raíz (ES)
+│   ├── index.astro        # Ruta raíz — ES
 │   ├── 404.astro          # Página de error
 │   └── en/
-│       └── index.astro    # Ruta inglesa (/en/)
+│       └── index.astro    # Ruta en inglés — /en/
 │
 └── styles/
     ├── global.css         # Reset, layout, glass system, animaciones, botones, tags
-    └── tokens.css         # Variables CSS: paleta Catppuccin, tipografía, geometría
+    └── tokens.css         # Variables CSS: paleta Catppuccin Mocha, tipografía, geometría
 ```
 
 ```
@@ -91,9 +90,9 @@ fondo oscuro profundo (`#11111b`), acentos en mauve, sapphire, teal y peach que
 proporcionan jerarquía visual sin abandonar la estética técnica.
 
 ```
-Fondo:     --crust    #11111b  /  --mantle  #181825  /  --base  #1e1e2e
-Texto:     --text     #cdd6f4  /  --subtext #bac2de
-Acentos:   --mauve    #cba6f7  /  --sapphire #74c7ec  /  --teal #94e2d5
+Fondo:    --crust    #11111b  /  --mantle  #181825  /  --base  #1e1e2e
+Texto:    --text     #cdd6f4  /  --subtext #bac2de
+Acentos:  --mauve    #cba6f7  /  --sapphire #74c7ec  /  --teal #94e2d5
 ```
 
 La tipografía **Azeret Mono** (monospace de proporciones amplias) refuerza la identidad técnica:
@@ -101,22 +100,8 @@ todo el sitio, desde los títulos hasta el cuerpo, usa la misma familia. No hay 
 decorativa ni sans-serif que rompa la coherencia.
 
 El **sistema glass** (`.glass`, `.glass-featured`) aplica `backdrop-filter: blur` + borde
-animado con `@property --border-angle` para crear tarjetas con gradiente de borde en rotación
-continua — efecto calculado para que no distraiga en reposo pero sea perceptible en hover.
-
----
-
-## Contexto Académico
-
-Autor: **Osvaldo A. (OACH)**
-Institución: Instituto Tecnológico de La Laguna — Torreón, Coahuila, México
-Carrera: Ingeniería Electrónica
-Especialización: Control & Automatización
-Semestre actual: 2do
-
-El sitio documenta proyectos que emergen de ese contexto: la intersección entre el software de
-bajo nivel (sistemas embebidos, Rust, C) y los sistemas físicos (control de procesos, sensores,
-actuadores).
+animado con `@property --border-angle` — gradiente de borde en rotación continua, calculado
+para que no distraiga en reposo pero sea perceptible en hover.
 
 ---
 
@@ -131,7 +116,7 @@ export async function fetchLangTags(repo: string): Promise<string[]> {
   const res = await fetch(`https://api.github.com/repos/${repo}/languages`);
   const langs: Record<string, number> = await res.json();
   return Object.keys(langs)
-    .filter(l => !NOISE.has(l))          // filtra HTML, CSS, Shell...
+    .filter(l => !NOISE.has(l))        // filtra HTML, CSS, Shell...
     .map(l => EMOJI[l] ? `${EMOJI[l]} ${l}` : l);
 }
 ```
