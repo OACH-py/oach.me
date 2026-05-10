@@ -37,17 +37,27 @@ export interface HomeT {
   skillsInfraGroup: string;
   skillsWebGroup: string;
   skillsHwGroup: string;
-  skillWebAI: string;
   skillHwCircuits: string;
   skillHwDigital: string;
   skillHwEmbedded: string;
-  contactBtn: string;
   sec04: string;
+  sec05: string;
   contactTitle: string;
   contactDesc: string;
   ariaHero: string;
   ariaActions: string;
   ariaTech: string;
+  aboutYears: string;
+  aboutEngPassion: string;
+  aboutPhiloLabel: string;
+  aboutTaoTag: string;
+  aboutInterestsLabel: string;
+  aboutLangsLabel: string;
+  ariaAbout: string;
+  labLabel: string;
+  labDesc: string;
+  aboutReadsLabel: string;
+  aboutStackLabel: string;
 }
 
 export const homeT: Record<Lang, HomeT> = {
@@ -85,17 +95,27 @@ export const homeT: Record<Lang, HomeT> = {
     skillsInfraGroup:'Среда и Ops',
     skillsWebGroup:  'Разработка и интерфейсы',
     skillsHwGroup:   'Электронная инженерия',
-    skillWebAI:      'ИИ / Агенты',
     skillHwCircuits: 'Схемы',
     skillHwDigital:  'Цифровая электроника',
     skillHwEmbedded: 'Встраиваемые системы',
-    contactBtn:      'Контакт',
-    sec04:           '04 — Контакт',
+    sec04:           '04 — Обо мне',
+    sec05:           '05 — Контакт',
     contactTitle:    'Напишите мне',
     contactDesc:     'Если у вас есть проект, идея или просто вопрос — пишите напрямую.',
     ariaHero:        'Представление',
     ariaActions:     'Быстрые действия',
     ariaTech:        'Технологии',
+    aboutYears:          'лет',
+    aboutEngPassion:     'Электронная инженерия — трансверсальная дисциплина: преподавание, автоматизация систем, менеджмент, разработка ПО. Что меня завораживает — связь между кодом и железом: строки инструкций создаются кремнием, улавливающим электроны, и те же строки могут воздействовать на кремний и электроны. Программное и аппаратное обеспечение — одно явление с двух углов.',
+    aboutPhiloLabel:     'Философия',
+    aboutTaoTag:         'Даосизм',
+    aboutInterestsLabel: 'Интересы',
+    aboutLangsLabel:     'Языки',
+    ariaAbout:           'Обо мне',
+    labLabel:            'Лаборатория · Железо',
+    labDesc:             'Схема, активирующая светодиод в зависимости от уровня освещённости. Фоторезистор фиксирует свет; потенциометр задаёт порог срабатывания.',
+    aboutReadsLabel:     'Чтение',
+    aboutStackLabel:     'Личный стек',
   },
   es: {
     heroParagraph: 'Estudiante de Ingeniería Electrónica · Defensor FOSS · Soberanía Digital',
@@ -131,17 +151,27 @@ export const homeT: Record<Lang, HomeT> = {
     skillsInfraGroup:'Entorno & Ops',
     skillsWebGroup:  'Desarrollo & Interfaces',
     skillsHwGroup:   'Ingeniería Electrónica',
-    skillWebAI:      'IA / Agentes',
     skillHwCircuits: 'Circuitos',
     skillHwDigital:  'Electrónica Digital',
     skillHwEmbedded: 'Sistemas Embebidos',
-    contactBtn:      'Contacto',
-    sec04:           '04 — Contacto',
+    sec04:           '04 — Sobre mí',
+    sec05:           '05 — Contacto',
     contactTitle:    '¿Hablamos?',
     contactDesc:     'Si tienes un proyecto, una idea o simplemente una pregunta — escribe directamente.',
     ariaHero:        'Presentación',
     ariaActions:     'Acciones rápidas',
     ariaTech:        'Tecnologías',
+    aboutYears:          'años',
+    aboutEngPassion:     'La ingeniería electrónica es transversal — desde la docencia hasta la automatización de sistemas, la gestión o el desarrollo de software. Lo que me fascina es la conexión entre el código y el hardware: las líneas de instrucción son creadas por silicio que atrapa electrones, y esas mismas líneas pueden afectar al silicio y a los electrones. El software y el hardware son el mismo fenómeno visto desde dos ángulos.',
+    aboutPhiloLabel:     'Filosofía',
+    aboutTaoTag:         'Taoísmo',
+    aboutInterestsLabel: 'Intereses',
+    aboutLangsLabel:     'Idiomas',
+    ariaAbout:           'Sobre mí',
+    labLabel:            'Lab · Hardware',
+    labDesc:             'Circuito que activa un LED según el nivel de luz ambiente. Una fotoresistencia detecta la iluminación; un potenciómetro calibra el umbral de disparo.',
+    aboutReadsLabel:     'Lecturas',
+    aboutStackLabel:     'Stack personal',
   },
   en: {
     heroParagraph: 'Electronics Engineering Student · FOSS Advocate · Digital Sovereignty',
@@ -177,16 +207,26 @@ export const homeT: Record<Lang, HomeT> = {
     skillsInfraGroup:'Environment & Ops',
     skillsWebGroup:  'Development & Interfaces',
     skillsHwGroup:   'Electronics Engineering',
-    skillWebAI:      'AI / Agents',
     skillHwCircuits: 'Circuits',
     skillHwDigital:  'Digital Electronics',
     skillHwEmbedded: 'Embedded Systems',
-    contactBtn:      'Contact',
-    sec04:           '04 — Contact',
+    sec04:           '04 — About',
+    sec05:           '05 — Contact',
     contactTitle:    'Get in touch',
     contactDesc:     'Have a project, an idea, or just a question — reach out directly.',
     ariaHero:        'Introduction',
     ariaActions:     'Quick actions',
     ariaTech:        'Technologies',
+    aboutYears:          'years old',
+    aboutEngPassion:     'Electronics engineering is transversal — from teaching to systems automation, management, or software development. What fascinates me is the connection between code and hardware: lines of instruction are created by silicon trapping electrons, and those same lines can affect silicon and electrons. Software and hardware are the same phenomenon seen from two angles.',
+    aboutPhiloLabel:     'Philosophy',
+    aboutTaoTag:         'Taoism',
+    aboutInterestsLabel: 'Interests',
+    aboutLangsLabel:     'Languages',
+    ariaAbout:           'About me',
+    labLabel:            'Lab · Hardware',
+    labDesc:             'Circuit that activates an LED based on ambient light level. A photoresistor detects the lighting; a potentiometer calibrates the trigger threshold.',
+    aboutReadsLabel:     'Reads',
+    aboutStackLabel:     'Personal stack',
   },
 };

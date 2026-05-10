@@ -52,7 +52,6 @@ const tx = homeT[lang];
     <nav class="hero-actions" aria-label={tx.ariaActions}>
       <a href="#zento" class="btn btn-primary">{tx.heroBtn}</a>
       <a href="https://github.com/OACH-py" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-      <a href="mailto:contact@oach.me" class="btn btn-ghost">{tx.contactBtn}</a>
     </nav>
 
   </div>
@@ -201,7 +200,6 @@ const tx = homeT[lang];
           <span class="eng-stack-label">{tx.skillsLangGroup}</span>
           <div class="tags">
             <span class="tag tag-sapphire">🐍 Python</span>
-            <span class="tag tag-peach">🦀 Rust</span>
             <span class="tag tag-teal">🔷 TypeScript</span>
             <span class="tag tag-neutral">Bash / Shell</span>
           </div>
@@ -222,11 +220,9 @@ const tx = homeT[lang];
         <div class="eng-stack-group">
           <span class="eng-stack-label">{tx.skillsWebGroup}</span>
           <div class="tags">
-            <span class="tag tag-mauve">TUI</span>
             <span class="tag tag-teal">Astro / SSG</span>
             <span class="tag tag-sapphire">REST APIs</span>
             <span class="tag tag-neutral">Web Scraping</span>
-            <span class="tag tag-mauve">{tx.skillWebAI}</span>
           </div>
         </div>
 
@@ -237,7 +233,6 @@ const tx = homeT[lang];
             <span class="tag tag-neutral">{tx.skillHwDigital}</span>
             <span class="tag tag-teal">{tx.engSpec}</span>
             <span class="tag tag-sapphire">{tx.skillHwEmbedded}</span>
-            <span class="tag tag-peach">PCB Design</span>
           </div>
         </div>
 
@@ -245,6 +240,16 @@ const tx = homeT[lang];
 
     </div>
 
+  </div>
+
+  <div class="glass tilt-card eng-lab-card" data-reveal style="--reveal-delay: 0.18s">
+    <span class="eng-stack-label">{tx.labLabel}</span>
+    <p class="eng-lab-desc">{tx.labDesc}</p>
+    <div class="tags">
+      <span class="tag tag-peach">LDR</span>
+      <span class="tag tag-neutral">Potentiometer</span>
+      <span class="tag tag-teal">LED</span>
+    </div>
   </div>
 
 </section>
@@ -283,10 +288,78 @@ const tx = homeT[lang];
 
 <hr class="divider container" />
 
+<!-- ABOUT -->
+<section id="about" class="section container" aria-labelledby="about-heading">
+
+  <span class="section-label" id="about-heading" data-reveal>{tx.sec04}</span>
+
+  <div class="glass tilt-card about-card" data-reveal style="--reveal-delay: 0.05s">
+
+    <div class="about-top">
+      <h2 class="about-name grad-text-hero">Osvaldo A.</h2>
+      <p class="about-handle">18 {tx.aboutYears} · Laguna, MX</p>
+    </div>
+
+    <p class="about-passion">{tx.aboutEngPassion}</p>
+
+    <div class="about-grid">
+
+      <div class="about-group">
+        <span class="about-group-label">{tx.aboutPhiloLabel}</span>
+        <div class="tags">
+          <span class="tag tag-mauve">{tx.aboutTaoTag}</span>
+        </div>
+      </div>
+
+      <div class="about-group">
+        <span class="about-group-label">{tx.aboutInterestsLabel}</span>
+        <div class="tags">
+          <span class="tag tag-peach">Anime</span>
+          <span class="tag tag-peach">Manhwa</span>
+        </div>
+      </div>
+
+      <div class="about-group">
+        <span class="about-group-label">{tx.aboutLangsLabel}</span>
+        <div class="tags">
+          <span class="tag tag-teal">🇲🇽 Español</span>
+          <span class="tag tag-neutral">🇺🇸 English →</span>
+          <span class="tag tag-neutral">🇷🇺 Русский →→</span>
+        </div>
+      </div>
+
+      <div class="about-group">
+        <span class="about-group-label">{tx.aboutStackLabel}</span>
+        <div class="tags">
+          <span class="tag tag-sapphire">Helium</span>
+          <span class="tag tag-peach">Brave</span>
+          <span class="tag tag-teal">ente Photos</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="about-reads">
+      <span class="about-group-label">{tx.aboutReadsLabel}</span>
+      <ul class="about-books">
+        <li class="about-book"><span class="about-book-title">El arte de la guerra</span><span class="about-book-author">Sun Tzu</span></li>
+        <li class="about-book"><span class="about-book-title">Rebelión en la granja</span><span class="about-book-author">George Orwell</span></li>
+        <li class="about-book"><span class="about-book-title">La metamorfosis</span><span class="about-book-author">Franz Kafka</span></li>
+        <li class="about-book"><span class="about-book-title">El hombre en busca del sentido último</span><span class="about-book-author">Viktor E. Frankl</span></li>
+      </ul>
+    </div>
+
+
+  </div>
+
+</section>
+
+<hr class="divider container" />
+
 <!-- CONTACT -->
 <section id="contact" class="section container" aria-labelledby="contact-heading">
 
-  <span class="section-label" id="contact-heading" data-reveal>{tx.sec04}</span>
+  <span class="section-label" id="contact-heading" data-reveal>{tx.sec05}</span>
 
   <div class="glass tilt-card contact-card" data-reveal style="--reveal-delay: 0.05s">
     <h2 class="contact-title grad-text-hero">{tx.contactTitle}</h2>
@@ -369,9 +442,9 @@ const tx = homeT[lang];
   }
 
   .hero-sub {
-    font-size: clamp(0.78rem, 2vw, 0.88rem);
-    color: var(--overlay1);
-    letter-spacing: 0.05em;
+    font-size: clamp(0.82rem, 2vw, 0.93rem);
+    color: var(--subtext0);
+    letter-spacing: 0.03em;
   }
 
   .hero-actions {
@@ -386,10 +459,11 @@ const tx = homeT[lang];
   .section-label {
     display: block;
     font-size: 0.73rem;
-    color: var(--overlay1);
+    color: var(--mauve);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: var(--sp-6);
+    opacity: 0.75;
   }
 
   .section-intro {
@@ -618,8 +692,8 @@ const tx = homeT[lang];
 
   /* ── Engineering layout ──────────────────────────────────────────── */
   .eng-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--sp-4);
   }
 
@@ -656,6 +730,22 @@ const tx = homeT[lang];
     text-transform: uppercase;
   }
 
+  .eng-lab-card {
+    padding: var(--sp-6) var(--sp-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    margin-top: var(--sp-4);
+  }
+
+  .eng-lab-desc {
+    font-size: 0.88rem;
+    line-height: 1.78;
+    color: var(--text);
+    opacity: 0.80;
+    max-width: 680px;
+  }
+
   /* ── Engineering skills card ─────────────────────────────────────── */
   .eng-skills-card {
     padding: var(--sp-8);
@@ -666,12 +756,8 @@ const tx = homeT[lang];
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-6);
-  }
-
-  @media (max-width: 860px) {
-    .skills-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 480px) {
@@ -682,7 +768,7 @@ const tx = homeT[lang];
   .axioms-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--sp-6);
+    gap: var(--sp-8);
   }
 
   @media (min-width: 640px) {
@@ -690,10 +776,10 @@ const tx = homeT[lang];
   }
 
   .axiom-card {
-    padding: var(--sp-8);
+    padding: var(--sp-10);
     display: flex;
     flex-direction: column;
-    gap: var(--sp-4);
+    gap: var(--sp-5);
   }
 
   .axiom-head {
@@ -743,6 +829,7 @@ const tx = homeT[lang];
   @media (max-width: 860px) {
     .bento-grid             { grid-template-columns: repeat(2, 1fr); }
     .bento-featured         { grid-column: 1 / 3; }
+    .eng-grid               { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 560px) {
@@ -757,13 +844,13 @@ const tx = homeT[lang];
     .eng-card        { padding: var(--sp-6); }
     .eng-skills-card { padding: var(--sp-6); }
     .hero-title      { letter-spacing: -0.04em; }
-    .axiom-card      { padding: var(--sp-6); }
+    .axiom-card      { padding: var(--sp-8); }
   }
 
   @media (max-width: 480px) {
     .featured-card,
     .eng-card   { padding: var(--sp-6) var(--sp-4); }
-    .axiom-card { padding: var(--sp-4); }
+    .axiom-card { padding: var(--sp-6); }
     .feat-desc,
     .eng-desc   { font-size: 0.9rem; }
     .section-intro { font-size: 0.88rem; }
@@ -775,13 +862,123 @@ const tx = homeT[lang];
     .hero-sub     { font-size: 0.75rem; }
   }
 
+  /* ── About card ───────────────────────────────────────────────────── */
+  .about-card {
+    padding: var(--sp-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-6);
+  }
+
+  .about-top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+  .about-name {
+    font-weight: 800;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    letter-spacing: -0.03em;
+  }
+
+  .about-handle {
+    font-size: 0.82rem;
+    color: var(--overlay2);
+    letter-spacing: 0.02em;
+  }
+
+  .about-passion {
+    font-size: 0.95rem;
+    line-height: 1.82;
+    color: var(--text);
+    opacity: 0.85;
+    max-width: 720px;
+  }
+
+  .about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-8);
+    padding-top: var(--sp-5);
+    border-top: 1px solid rgba(203, 166, 247, 0.08);
+  }
+
+  .about-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .about-group-label {
+    font-size: 0.68rem;
+    color: var(--overlay1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .about-tag-link {
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .about-tag-link:hover { opacity: 0.75; }
+
+  .about-reads {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    padding-top: var(--sp-5);
+    border-top: 1px solid rgba(203, 166, 247, 0.08);
+  }
+
+  .about-books {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .about-book {
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-3);
+  }
+
+  .about-book-title {
+    font-size: 0.84rem;
+    color: var(--text);
+    opacity: 0.88;
+  }
+
+  .about-book-author {
+    font-size: 0.72rem;
+    color: var(--overlay1);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .about-card { padding: var(--sp-6); }
+  }
+
+  @media (max-width: 480px) {
+    .about-card    { padding: var(--sp-6) var(--sp-4); }
+    .about-passion { font-size: 0.9rem; }
+    .about-grid    { gap: var(--sp-6); }
+  }
+
   /* ── Contact card ─────────────────────────────────────────────────── */
   .contact-card {
     padding: var(--sp-10);
     display: flex;
     flex-direction: column;
     gap: var(--sp-5);
-    max-width: 640px;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
   }
 
   .contact-title {
@@ -801,6 +998,7 @@ const tx = homeT[lang];
     display: flex;
     flex-wrap: wrap;
     gap: var(--sp-3);
+    justify-content: center;
   }
 
   .contact-pill {
