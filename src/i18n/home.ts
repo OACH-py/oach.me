@@ -24,15 +24,30 @@ export interface HomeT {
   sec03: string;
   philoIntro: string;
   philoAnd: string;
-  philoTail: string;
+  philoTailA: string;
+  philoTailB: string;
   axioms: AxiomData[];
-  stackLabel: string;
-  exploringLabel: string;
-  focusLabel: string;
+  ytSubscribers: string;
+  ytViews: string;
+  ytVideos: string;
+  ytRecent: string;
+  ytEarly: string;
+  skillsTitle: string;
+  skillsLangGroup: string;
+  skillsInfraGroup: string;
+  skillsWebGroup: string;
+  skillsHwGroup: string;
+  skillWebAI: string;
+  skillHwCircuits: string;
+  skillHwDigital: string;
+  skillHwEmbedded: string;
   contactBtn: string;
   sec04: string;
   contactTitle: string;
   contactDesc: string;
+  ariaHero: string;
+  ariaActions: string;
+  ariaTech: string;
 }
 
 export const homeT: Record<Lang, HomeT> = {
@@ -52,20 +67,35 @@ export const homeT: Record<Lang, HomeT> = {
     sec03:         '03 — Философия системы',
     philoIntro:    'Принятие философии',
     philoAnd:      'и',
-    philoTail:     'отражает потребность в системной ясности и полном контроле над вычислительной средой. Как добросовестный пользователь дистрибутива, не могу не упомянуть: I use Arch, btw.\nКаждое рабочее решение определяется четырьмя фундаментальными аксиомами.',
+    philoTailA:    'отражает потребность в системной ясности и полном контроле над вычислительной средой. Как добросовестный пользователь дистрибутива, не могу не упомянуть: I use Arch, btw.',
+    philoTailB:    'Каждое рабочее решение определяется четырьмя фундаментальными аксиомами.',
     axioms: [
       { num: '01', title: 'KISS',                          color: 'mauve',    label: 'Простота прежде всего',   desc: 'Функциональная простота — приоритет. Излишняя сложность есть <em>ошибка проектирования</em>.' },
       { num: '02', title: 'Проактивная<br />приватность',  color: 'sapphire', label: 'Суверенитет данных',      desc: 'Абсолютная целостность данных. Слежка, перепродажа и перекрёстное использование личной информации неприемлемы — <em>суверенитет принадлежит пользователю</em>.' },
       { num: '03', title: 'Техническая<br />прозрачность', color: 'teal',     label: 'Честность системы',       desc: 'ПО должно быть явным в своих действиях и свободным от <em>скрытой телеметрии</em>. Процессы наблюдаемы и поддаются аудиту.' },
       { num: '04', title: 'Устойчивая<br />модульность',   color: 'peach',    label: 'Взаимозаменяемость',      desc: 'Компоненты, заменяемые по выбору пользователя, активно противостоящие <em>запланированному устареванию</em> посредством модульного дизайна.' },
     ],
-    stackLabel:     'Стек',
-    exploringLabel: 'Изучаю',
-    focusLabel:     'Область фокуса',
-    contactBtn:     'Контакт',
-    sec04:        '04 — Контакт',
-    contactTitle: 'Напишите мне',
-    contactDesc:  'Если у вас есть проект, идея или просто вопрос — пишите напрямую.',
+    ytSubscribers:   'подписчиков',
+    ytViews:         'просмотров',
+    ytVideos:        'видео',
+    ytRecent:        'Последние видео',
+    ytEarly:         'Канал в разработке — контент скоро появится.',
+    skillsTitle:     'Технические компетенции',
+    skillsLangGroup: 'Языки и скриптинг',
+    skillsInfraGroup:'Среда и Ops',
+    skillsWebGroup:  'Разработка и интерфейсы',
+    skillsHwGroup:   'Электронная инженерия',
+    skillWebAI:      'ИИ / Агенты',
+    skillHwCircuits: 'Схемы',
+    skillHwDigital:  'Цифровая электроника',
+    skillHwEmbedded: 'Встраиваемые системы',
+    contactBtn:      'Контакт',
+    sec04:           '04 — Контакт',
+    contactTitle:    'Напишите мне',
+    contactDesc:     'Если у вас есть проект, идея или просто вопрос — пишите напрямую.',
+    ariaHero:        'Представление',
+    ariaActions:     'Быстрые действия',
+    ariaTech:        'Технологии',
   },
   es: {
     heroParagraph: 'Estudiante de Ingeniería Electrónica · Defensor FOSS · Soberanía Digital',
@@ -77,26 +107,41 @@ export const homeT: Record<Lang, HomeT> = {
     sec02:         '02 — Documentación de Ingeniería',
     engTitle:      'Ingeniería Electrónica',
     engP1:         'Mi interés central en Ingeniería Electrónica reside en la convergencia entre el código abstracto y el hardware tangible. Me enfoco en cómo las líneas de instrucción interactúan directamente con el silicio para producir efectos medibles en el mundo físico — desde el control de procesos industriales hasta el diseño de sistemas embebidos.',
-    engP2:         'Actualmente cursando el 2do semestre de Ingeniería Electrónica en el Tecnológico de la Laguna, con especialización en',
+    engP2:         'Actualmente cursando el segundo semestre de Ingeniería Electrónica en el Tecnológico de la Laguna, con especialización en',
     engSpec:       'Control & Automatización',
     engP2tail:     '. Mi base técnica comienza como Técnico en Ofimática — punto de partida desde el que migré hacia la intersección entre el código abstracto y el silicio.',
     sec03:         '03 — Filosofía del Sistema',
     philoIntro:    'Adoptar la filosofía',
     philoAnd:      'y',
-    philoTail:     'refleja una necesidad de claridad sistémica y control total sobre el entorno computacional. Como buen usuario de la distro, me veo en la necesidad de mencionarlo: I use Arch, btw.\nCada decisión de flujo de trabajo está gobernada por cuatro axiomas fundamentales.',
+    philoTailA:    'refleja una necesidad de claridad sistémica y control total sobre el entorno computacional. Como buen usuario de la distro, me veo en la necesidad de mencionarlo: I use Arch, btw.',
+    philoTailB:    'Cada decisión de flujo de trabajo está gobernada por cuatro axiomas fundamentales.',
     axioms: [
       { num: '01', title: 'KISS',                      color: 'mauve',    label: 'Mantén la Simplicidad',        desc: 'La simpleza funcional es la prioridad. La complejidad innecesaria es un <em>error de diseño</em>.' },
-      { num: '02', title: 'Privacidad<br />Proactiva',  color: 'sapphire', label: 'Soberanía de Datos',           desc: 'Integridad de datos absoluta. El seguimiento, reventa y cruce de información personal es rechazado — <em>la soberanía reside en el usuario</em>.' },
+      { num: '02', title: 'Privacidad<br />Proactiva',  color: 'sapphire', label: 'Soberanía de Datos',           desc: 'Integridad de datos absoluta. El seguimiento, reventa y cruce de información personal son rechazados — <em>la soberanía reside en el usuario</em>.' },
       { num: '03', title: 'Transparencia<br />Técnica', color: 'teal',     label: 'Honestidad del Sistema',       desc: 'El software debe ser explícito en sus acciones y libre de <em>telemetría oculta</em>. Los procesos son observables y auditables.' },
       { num: '04', title: 'Modularidad<br />Sostenible',color: 'peach',    label: 'Diseñado para el Intercambio', desc: 'Componentes intercambiables por elección del usuario, resistiendo activamente la <em>obsolescencia programada</em> mediante diseño modular.' },
     ],
-    stackLabel:     'Stack',
-    exploringLabel: 'Explorando',
-    focusLabel:     'Área de enfoque',
-    contactBtn:     'Contacto',
-    sec04:        '04 — Contacto',
-    contactTitle: '¿Hablamos?',
-    contactDesc:  'Si tienes un proyecto, una idea o simplemente una pregunta — escribe directo.',
+    ytSubscribers:   'suscriptores',
+    ytViews:         'vistas totales',
+    ytVideos:        'videos',
+    ytRecent:        'Últimos videos',
+    ytEarly:         'Canal en construcción — el contenido llega pronto.',
+    skillsTitle:     'Competencias técnicas',
+    skillsLangGroup: 'Lenguajes & Scripting',
+    skillsInfraGroup:'Entorno & Ops',
+    skillsWebGroup:  'Desarrollo & Interfaces',
+    skillsHwGroup:   'Ingeniería Electrónica',
+    skillWebAI:      'IA / Agentes',
+    skillHwCircuits: 'Circuitos',
+    skillHwDigital:  'Electrónica Digital',
+    skillHwEmbedded: 'Sistemas Embebidos',
+    contactBtn:      'Contacto',
+    sec04:           '04 — Contacto',
+    contactTitle:    '¿Hablamos?',
+    contactDesc:     'Si tienes un proyecto, una idea o simplemente una pregunta — escribe directamente.',
+    ariaHero:        'Presentación',
+    ariaActions:     'Acciones rápidas',
+    ariaTech:        'Tecnologías',
   },
   en: {
     heroParagraph: 'Electronics Engineering Student · FOSS Advocate · Digital Sovereignty',
@@ -114,19 +159,34 @@ export const homeT: Record<Lang, HomeT> = {
     sec03:         '03 — System Philosophy',
     philoIntro:    'Adopting the',
     philoAnd:      'philosophy and',
-    philoTail:     'reflects a need for systemic clarity and full control over the computational environment. As a proper user of the distro, I feel compelled to mention it: I use Arch, btw.\nEvery workflow decision is governed by four foundational axioms.',
+    philoTailA:    'reflects a need for systemic clarity and full control over the computational environment. As a proper user of the distro, I feel compelled to mention it: I use Arch, btw.',
+    philoTailB:    'Every workflow decision is governed by four foundational axioms.',
     axioms: [
       { num: '01', title: 'KISS',                        color: 'mauve',    label: 'Keep It Simple, Stupid', desc: 'Functional simplicity is the priority. Unnecessary complexity is a <em>design error</em>.' },
-      { num: '02', title: 'Proactive<br />Privacy',       color: 'sapphire', label: 'Data Sovereignty',      desc: 'Absolute data integrity. Tracking, resale, and cross-referencing of personal information is rejected — <em>sovereignty rests with the user</em>.' },
+      { num: '02', title: 'Proactive<br />Privacy',       color: 'sapphire', label: 'Data Sovereignty',      desc: 'Absolute data integrity. Tracking, resale, and cross-referencing of personal information are rejected — <em>sovereignty rests with the user</em>.' },
       { num: '03', title: 'Technical<br />Transparency',  color: 'teal',     label: 'System Honesty',        desc: 'Software must be explicit in its actions and free of <em>hidden telemetry</em>. Processes are observable and auditable.' },
       { num: '04', title: 'Sustainable<br />Modularity',  color: 'peach',    label: 'Swappable by Design',   desc: 'Components swappable by user choice, actively resisting <em>planned obsolescence</em> through modular design.' },
     ],
-    stackLabel:     'Stack',
-    exploringLabel: 'Exploring',
-    focusLabel:     'Focus area',
-    contactBtn:     'Contact',
-    sec04:        '04 — Contact',
-    contactTitle: 'Get in touch',
-    contactDesc:  'Have a project, an idea, or just a question — reach out directly.',
+    ytSubscribers:   'subscribers',
+    ytViews:         'total views',
+    ytVideos:        'videos',
+    ytRecent:        'Recent videos',
+    ytEarly:         'Channel under construction — content coming soon.',
+    skillsTitle:     'Technical Competencies',
+    skillsLangGroup: 'Languages & Scripting',
+    skillsInfraGroup:'Environment & Ops',
+    skillsWebGroup:  'Development & Interfaces',
+    skillsHwGroup:   'Electronics Engineering',
+    skillWebAI:      'AI / Agents',
+    skillHwCircuits: 'Circuits',
+    skillHwDigital:  'Digital Electronics',
+    skillHwEmbedded: 'Embedded Systems',
+    contactBtn:      'Contact',
+    sec04:           '04 — Contact',
+    contactTitle:    'Get in touch',
+    contactDesc:     'Have a project, an idea, or just a question — reach out directly.',
+    ariaHero:        'Introduction',
+    ariaActions:     'Quick actions',
+    ariaTech:        'Technologies',
   },
 };

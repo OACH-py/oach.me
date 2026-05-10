@@ -14,7 +14,7 @@ export const softwareProjectsEs: Project[] = [
     title: 'ZentoPath',
     subtitle: 'Divulgación Técnica · YouTube',
     description:
-      'Canal de divulgación técnica con una premisa central: lo que usas no es realmente tuyo. Cada pieza deconstruye la obsolescencia programada, el verdadero costo de lo "gratuito" y los mecanismos por los que la industria retiene el control sobre tus herramientas digitales — desde una perspectiva independiente, sin conflictos de interés.',
+      'Canal de divulgación técnica con una premisa central: lo que usas no es realmente tuyo. Cada pieza deconstruye la obsolescencia programada, el verdadero costo de lo «gratuito» y los mecanismos por los que la industria retiene el control sobre tus herramientas digitales — desde una perspectiva independiente, sin conflictos de interés.',
     tags: ['🛡️ Privacidad', '📽️ Video', '✍️ Ensayo', '📜 Historia Tech'],
     accent: 'sapphire',
     status: 'active',
@@ -46,9 +46,21 @@ export const softwareProjectsEs: Project[] = [
     description:
       'Stack Docker Compose para servidor multimedia doméstico. Orquesta qBittorrent, Radarr, Sonarr, Prowlarr, Jellyfin, Jellyseerr y Bazarr con configuración centralizada en variables de entorno. Sin dependencias externas, sin telemetría.',
     tags: ['🐳 Docker', '📦 Compose', '🎬 Self-hosted', '🔓 Open Source'],
+    githubRepo: 'OACH-py/media-server-stack',
     accent: 'teal',
     status: 'complete',
     link: 'https://github.com/OACH-py/media-server-stack',
+  },
+  {
+    title: 'Python Fundamentals',
+    subtitle: 'Aprendizaje Estructurado · 12 Proyectos',
+    description:
+      '12 proyectos prácticos distribuidos en 4 niveles de dificultad progresiva: fundamentos de sintaxis, estructuras de datos, persistencia con POO y automatización web. Documentación abierta del proceso de aprendizaje — desde lógica condicional hasta consumo de APIs REST, sin atajos.',
+    tags: ['🐍 Python', '🧠 Algoritmos', '🔓 Open Source'],
+    githubRepo: 'OACH-py/python-fundamentals',
+    accent: 'sapphire',
+    status: 'active',
+    link: 'https://github.com/OACH-py/python-fundamentals',
   },
 ];
 
@@ -89,9 +101,21 @@ export const softwareProjectsRu: Project[] = [
     description:
       'Docker Compose стек для домашнего медиасервера. Оркестрирует qBittorrent, Radarr, Sonarr, Prowlarr, Jellyfin, Jellyseerr и Bazarr с централизованной конфигурацией через переменные окружения. Без внешних зависимостей, без телеметрии.',
     tags: ['🐳 Docker', '📦 Compose', '🎬 Self-hosted', '🔓 Open Source'],
+    githubRepo: 'OACH-py/media-server-stack',
     accent: 'teal',
     status: 'complete',
     link: 'https://github.com/OACH-py/media-server-stack',
+  },
+  {
+    title: 'Python Fundamentals',
+    subtitle: 'Структурированное обучение · 12 проектов',
+    description:
+      '12 практических проектов по 4 уровням нарастающей сложности: основы синтаксиса, структуры данных, ООП с персистентностью, веб-автоматизация. Открытая документация процесса обучения — от условной логики до REST API, без срезания углов.',
+    tags: ['🐍 Python', '🧠 Алгоритмы', '🔓 Open Source'],
+    githubRepo: 'OACH-py/python-fundamentals',
+    accent: 'sapphire',
+    status: 'active',
+    link: 'https://github.com/OACH-py/python-fundamentals',
   },
 ];
 
@@ -132,8 +156,20 @@ export const softwareProjectsEn: Project[] = [
     description:
       'Docker Compose stack for a home media server. Orchestrates qBittorrent, Radarr, Sonarr, Prowlarr, Jellyfin, Jellyseerr and Bazarr with centralized env-based config. No external dependencies, no telemetry.',
     tags: ['🐳 Docker', '📦 Compose', '🎬 Self-hosted', '🔓 Open Source'],
+    githubRepo: 'OACH-py/media-server-stack',
     accent: 'teal',
     status: 'complete',
     link: 'https://github.com/OACH-py/media-server-stack',
+  },
+  {
+    title: 'Python Fundamentals',
+    subtitle: 'Structured Learning · 12 Projects',
+    description:
+      '12 practical projects across 4 progressive difficulty levels: syntax fundamentals, data structures, OOP with persistence, and web automation. Open documentation of the learning process — from conditional logic to REST API consumption, no shortcuts.',
+    tags: ['🐍 Python', '🧠 Algorithms', '🔓 Open Source'],
+    githubRepo: 'OACH-py/python-fundamentals',
+    accent: 'sapphire',
+    status: 'active',
+    link: 'https://github.com/OACH-py/python-fundamentals',
   },
 ];

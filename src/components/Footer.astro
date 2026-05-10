@@ -28,22 +28,21 @@ const t = {
 } as const;
 
 const tx = t[lang];
+const linksLabel = lang === 'ru' ? 'Внешние ссылки' : lang === 'en' ? 'External links' : 'Links externos';
 ---
 <footer class="site-footer">
   <div class="container">
 
-    <!--
-      Fila principal: brand (logo + copyright) a la izquierda,
-      links de navegación a la derecha.
-    -->
     <div class="footer-inner">
 
       <div class="footer-brand">
-        <span class="footer-brand-name">OACH</span>
+        <span class="footer-prompt" aria-label="OACH">
+          <span class="p-user">oach</span><span class="p-at">@</span><span class="p-host">zen</span><span class="p-colon">:</span><span class="p-tilde">~</span><span class="p-dollar">$</span>
+        </span>
         <small class="footer-copy">© {year} · OACH · {tx.madeWith}</small>
       </div>
 
-      <nav class="footer-links" aria-label="Links externos">
+      <nav class="footer-links" aria-label={linksLabel}>
         <a href="https://github.com/OACH-py"        class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://youtube.com/@ZentoPath"     class="footer-link" target="_blank" rel="noopener noreferrer">ZentoPath</a>
         <a href="https://github.com/OACH-py/oach.me" class="footer-link footer-source" target="_blank" rel="noopener noreferrer">{tx.source} ↗</a>
@@ -51,11 +50,6 @@ const tx = t[lang];
 
     </div>
 
-    <!--
-      Fila de metadatos legales: una línea horizontal en desktop.
-      Los separadores (·) se generan con ::before para que nunca
-      queden huérfanos al romper línea en pantallas estrechas.
-    -->
     <small class="footer-meta">
       <a
         href="https://github.com/OACH-py/oach.me/blob/main/LICENSE"
@@ -93,19 +87,24 @@ const tx = t[lang];
     gap: var(--sp-1);
   }
 
-  .footer-brand-name {
-    font-weight: 800;
-    font-size: 0.9rem;
-    color: var(--mauve);
-    opacity: 0.65;
-    letter-spacing: 0.04em;
+  .footer-prompt {
+    font-family: var(--font);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1;
+    opacity: 0.75;
   }
+
+  .p-user   { color: var(--mauve);    }
+  .p-at     { color: var(--subtext0); }
+  .p-host   { color: var(--teal);     }
+  .p-colon  { color: var(--subtext0); }
+  .p-tilde  { color: var(--blue);     }
+  .p-dollar { color: var(--green);    }
 
   .footer-copy {
     font-size: 0.75rem;
-    color: var(--overlay0);
-    /* <small> tiene un font-size heredado más pequeño; resetear */
-    font-size: 0.75rem;
+    color: var(--overlay2);
   }
 
   .footer-links {
@@ -116,7 +115,7 @@ const tx = t[lang];
 
   .footer-link {
     font-size: 0.78rem;
-    color: var(--overlay0);
+    color: var(--overlay2);
     text-decoration: none;
     transition: color 0.2s ease;
     white-space: nowrap;
@@ -138,9 +137,8 @@ const tx = t[lang];
     padding-top: var(--sp-3);
     border-top: 1px solid rgba(203, 166, 247, 0.04);
     /* Resetear herencia de <small> */
-    font-size: 0.70rem;
-    color: var(--overlay0);
-    opacity: 0.55;
+    font-size: 0.7rem;
+    color: var(--overlay1);
   }
 
   /* El · se genera como ::before del item siguiente al primero.

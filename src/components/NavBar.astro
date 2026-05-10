@@ -3,6 +3,7 @@ const pathname = Astro.url.pathname;
 const lang = pathname.startsWith('/en') ? 'en' : pathname.startsWith('/ru') ? 'ru' : 'es';
 
 const menuLabel = lang === 'ru' ? 'Меню' : lang === 'en' ? 'Menu' : 'Menú';
+const navLabel  = lang === 'ru' ? 'Основная навигация' : lang === 'en' ? 'Main navigation' : 'Navegación principal';
 
 const navLinksEs = [
   { href: '#zento',     label: 'Proyectos'  },
@@ -36,10 +37,12 @@ const langOptions = [
 const homeHref = langOptions.find(l => l.code === lang)!.href;
 ---
 <header class="site-header" id="site-header">
-  <nav class="container nav-inner" aria-label="Navegación principal">
+  <nav class="container nav-inner" aria-label={navLabel}>
 
     <a href={homeHref} class="nav-logo" aria-label="Inicio — OACH">
-      <img src="/favicon.svg" alt="OACH" class="nav-logo-img" width="36" height="36" />
+      <span class="nav-logo-prompt" aria-hidden="true">
+        <span class="p-user">oach</span><span class="p-at">@</span><span class="p-host">zen</span><span class="p-colon">:</span><span class="p-tilde">~</span><span class="p-dollar">$</span>
+      </span>
     </a>
 
     <ul class="nav-links" id="nav-menu" role="list">
@@ -59,7 +62,7 @@ const homeHref = langOptions.find(l => l.code === lang)!.href;
       <div class="lang-group" role="navigation" aria-label="Language / Idioma / Язык">
         {langOptions.map(l => (
           l.code === lang
-            ? <span class="lang-badge lang-active" aria-current="true">{l.label}</span>
+            ? <span class="lang-badge lang-active" aria-current="page">{l.label}</span>
             : <a href={l.href} class="lang-badge">{l.label}</a>
         ))}
       </div>
@@ -114,11 +117,19 @@ const homeHref = langOptions.find(l => l.code === lang)!.href;
 
   .nav-logo:hover { opacity: 0.75; }
 
-  .nav-logo-img {
-    display: block;
-    width: 36px;
-    height: 36px;
+  .nav-logo-prompt {
+    font-family: var(--font);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1;
   }
+
+  .p-user   { color: var(--mauve);    }
+  .p-at     { color: var(--subtext0); }
+  .p-host   { color: var(--teal);     }
+  .p-colon  { color: var(--subtext0); }
+  .p-tilde  { color: var(--blue);     }
+  .p-dollar { color: var(--green);    }
 
   /* Desktop: centred inline links */
   .nav-links {
@@ -169,7 +180,7 @@ const homeHref = langOptions.find(l => l.code === lang)!.href;
     font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.07em;
-    color: var(--overlay0);
+    color: var(--overlay2);
     text-decoration: none;
     padding: 0.12em 0.38em;
     border-radius: 999px;

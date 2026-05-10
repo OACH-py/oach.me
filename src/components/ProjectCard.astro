@@ -2,7 +2,7 @@
 import type { Project } from '../data/projects';
 
 interface Props {
-  project: Project;
+  project: Project & { stars?: number };
   lang?: 'es' | 'en' | 'ru';
 }
 
@@ -24,9 +24,14 @@ const statusLabel = statusLabels[lang][project.status];
       <h3 class="card-title">{project.title}</h3>
       <p class="card-subtitle">{project.subtitle}</p>
     </div>
-    <span class:list={['tag status-tag', `tag-${project.accent}`]}>
-      {statusLabel}
-    </span>
+    <div class="card-badges">
+      {project.stars != null && project.stars > 0 && (
+        <span class="star-badge">★ {project.stars}</span>
+      )}
+      <span class:list={['tag status-tag', `tag-${project.accent}`]}>
+        {statusLabel}
+      </span>
+    </div>
   </div>
 
   <p class="card-desc">{project.description}</p>
@@ -38,7 +43,7 @@ const statusLabel = statusLabels[lang][project.status];
   </div>
 
   {project.link && (
-    <a href={project.link} class="btn btn-primary card-cta" target="_blank" rel="noopener">
+    <a href={project.link} class="btn btn-primary card-cta" target="_blank" rel="noopener noreferrer">
       {ctaLabel[lang]}
     </a>
   )}
@@ -68,8 +73,28 @@ const statusLabel = statusLabels[lang][project.status];
 
   .card-subtitle {
     font-size: 0.8rem;
-    color: var(--overlay0);
+    color: var(--overlay2);
     margin-top: var(--sp-1);
+  }
+
+  .card-badges {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--sp-2);
+    flex-shrink: 0;
+  }
+
+  .star-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--yellow);
+    background: rgba(249, 226, 175, 0.10);
+    border: 1px solid rgba(249, 226, 175, 0.25);
+    border-radius: 999px;
+    padding: 0.15em 0.6em;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
   }
 
   .status-tag { font-size: 0.68rem; white-space: nowrap; }
